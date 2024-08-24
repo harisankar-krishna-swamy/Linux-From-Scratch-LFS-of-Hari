@@ -1,0 +1,17 @@
+make: Entering directory '/mnt/lfs/sources/ncurses-6.4-20230520/build/include'
+cat curses.head >curses.h
+/bin/sh ../../include/MKhashsize.sh ../../include/Caps ../../include/Caps-ncurses >hashsize.h
+AWK=gawk /bin/sh ../../include/MKncurses_def.sh ../../include/ncurses_defs >ncurses_def.h
+AWK=gawk /bin/sh ../../include/MKparametrized.sh ../../include/Caps ../../include/Caps-ncurses >parametrized.h
+touch config.h
+gawk -f MKterm.h.awk ../../include/Caps ../../include/Caps-ncurses > term.h
+AWK=gawk /bin/sh ../../include/MKkey_defs.sh ../../include/Caps ../../include/Caps-ncurses >>curses.h
+/bin/sh ../../include/edit_cfg.sh ../include/ncurses_cfg.h term.h
+** edit: HAVE_TCGETATTR 1
+** edit: HAVE_TERMIOS_H 1
+** edit: HAVE_TERMIO_H 1
+/bin/sh -c 'if test "0" = "1" ; then cat ../../include/curses.events >>curses.h ; fi'
+/bin/sh -c 'if test "chtype" = "cchar_t" ; then cat ../../include/curses.wide >>curses.h ; fi'
+** edit: BROKEN_LINKER 0
+cat ../../include/curses.tail >>curses.h
+make: Leaving directory '/mnt/lfs/sources/ncurses-6.4-20230520/build/include'
