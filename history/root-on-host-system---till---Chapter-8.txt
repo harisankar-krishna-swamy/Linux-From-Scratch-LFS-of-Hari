@@ -1,0 +1,151 @@
+    1  vi /etc/sudoers
+    2  exit
+    3  cd /mnt/lfs/sources/
+    4  ls
+    5  export LFS=/mnt/lfs
+    6  echo $LFS
+    7  chmod -v a+wt $LFS/sources
+    8  ls -l /mnt/lfs/
+    9  ls
+   10  which wget
+   11  wget --input-file=wget-list --continue --directory-prefix=$LFS/sources
+   12  md5sum -c md5sums 
+   13  ls
+   14  wget --input-file=wget-list --continue --directory-prefix=$LFS/sources
+   15  md5sum -cv md5sums 
+   16  md5sum -c -v md5sums 
+   17  man md5sum
+   18  md5sum -cv md5sums 
+   19  md5sum -c md5sums 
+   20  md5sum -c md5sums 
+   21  md5sum -c md5sums 
+   22  rm expat-2.6.2.tar.xz 
+   23  md5sum -c md5sums 
+   24  chown root:root ./
+   25  ls -l
+   26  chown root:root ./*
+   27  ls -l
+   28  mkdir -p /home/hari/iso/LFS-12.1/mnt/lfs/sources
+   29  cp ./* /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   30  chown -R hari:hari /home/hari/iso/LFS-12.1/mnt
+   31  ls
+   32  ls -l
+   33  ls -l | grep hari
+   34  cp ./expat-2.6.2.tar.xz /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   35  cp ./glibc-2.40.tar.gz /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   36  chown -R hari:hari /home/hari/iso/LFS-12.1/mnt
+   37  cp ./openssl-3.3.1.tar.gz /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   38  chown -R hari:hari /home/hari/iso/LFS-12.1/mnt
+   39  cp ./python-3.12.5 /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   40  cp ./python-3.12.5* /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   41  chown -R hari:hari /home/hari/iso/LFS-12.1/mnt
+   42  diff ./ /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   43  cp ./Python-3.12.5.tar.xz /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   44  chown -R hari:hari /home/hari/iso/LFS-12.1/mnt
+   45  diff ./ /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+   46  ls | grep patch
+   47  history
+   48  clear
+   49  cd ..
+   50  ls
+   51  mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
+   52  ls
+   53  ls usr/
+   54  for i in bin lib sbin; do   ln -sv usr/$i $LFS/$i; done
+   55  ls -l
+   56  case $(uname -m) in   x86_64) mkdir -pv $LFS/lib64 ;; esac
+   57  uname -m
+   58  man uname
+   59  ls /
+   60  clear
+   61  mkdir -pv $LFS/tools
+   62  ls
+   63  ls -l
+   64  groupadd lfs
+   65  history | grep export
+   66  groupadd
+   67  exit
+   68  ls -l sh
+   69  mv sh _sh
+   70  ln -s sh ./bash
+   71  ln -s bash sh
+   72  ls -l sh
+   73  ls -l _sh
+   74  ls -l awk 
+   75  mv awk _awk
+   76  ln -s gawk awk
+   77  ls -l awk
+   78  mv yacc _yacc
+   79  ln -s yacc bison
+   80  ln -s bison yacc
+   81  exit
+   82  cd ~
+   83  ls
+   84  ls -l
+   85  cp lfs-temp-tools-12.1.tar.xz /home/hari/iso/LFS-12.1/
+   86  chown hari:hari /home/hari/iso/LFS-12.1/lfs-temp-tools-12.1.tar.xz
+   87  exit
+   88  export LFS=/mnt/lfs
+   89  cd /mnt/lfs/
+   90  ls
+   91  groupadd lfs
+   92  useradd -s /bin/bash -g lfs -m -k /dev/null lf
+   93  cat /etc/passwd
+   94  deluser lf
+   95  cat /etc/passwd
+   96  useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+   97  clear
+   98  echo $LFS
+   99  password lfs
+  100  passwd lfs
+  101  chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+  102  ls -l
+  103  case $(uname -m) in   x86_64) chown -v lfs $LFS/lib64 ;; esac
+  104  ls -l
+  105  ls -l usr/
+  106  su - lfs
+  107  su - lfs
+  108  su - lfs
+  109  cd sources/
+  110  cp ./* /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+  111  diff ./ /home/hari/iso/LFS-12.1/mnt/lfs/sources/
+  112  ls
+  113  rm expat-2.6.0.tar.xz 
+  114  rm glibc-2.39-fhs-1.patch 
+  115  rm glibc-2.39.tar.xz 
+  116  rm openssl-3.2.1.tar.gz 
+  117  rm Python-3.12.2.tar.xz 
+  118  rm python-3.12.2-docs-html.tar.bz2 
+  119  clear
+  120  su - lfs
+  121  cd ..
+  122  ls
+  123  su - lfs
+  124  su - lfs
+  125  echo $LFS
+  126  env
+  127  chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}
+  128  ls -l
+  129  case $(uname -m) in   x86_64) chown -R root:root $LFS/lib64 ;; esac
+  130  ls -l
+  131  mkdir -pv $LFS/{dev,proc,sys,run}
+  132  ls
+  133  ls dev/
+  134  mount -v --bind /dev $LFS/dev
+  135  ls dev/
+  136  mount -vt devpts devpts -o gid=5,mode=0620 $LFS/dev/pts
+  137  mount -vt proc proc $LFS/proc
+  138  mount -vt sysfs sysfs $LFS/sys
+  139  mount -vt tmpfs tmpfs $LFS/run
+  140  ls $LFS/dev/shm
+  141  if [ -h $LFS/dev/shm ]; then   install -v -d -m 1777 $LFS$(realpath /dev/shm); else   mount -vt tmpfs -o nosuid,nodev tmpfs $LFS/dev/shm; fi
+  142  ls $LFS/dev/shm/
+  143  chroot "$LFS" /usr/bin/env -i       HOME=/root                      TERM="$TERM"                    PS1='(lfs chroot) \u:\w\$ '     PATH=/usr/bin:/usr/sbin         MAKEFLAGS="-j$(nproc)"          TESTSUITEFLAGS="-j$(nproc)"     /bin/bash --login
+  144  mountpoint -q $LFS/dev/shm && umount $LFS/dev/shm
+  145  umount $LFS/dev/pts
+  146  umount $LFS/{sys,proc,run,dev}
+  147  cd $LFS
+  148  tar -cJpf $HOME/lfs-temp-tools-12.1.tar.xz .
+  149  exit
+  150  history
+  151  history > /home/hari/workspace2017/my-opensource-gits/Linux-From-Scratch-LFS-of-Hari/history/root-history.txt
