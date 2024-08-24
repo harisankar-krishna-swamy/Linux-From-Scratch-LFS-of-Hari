@@ -1,0 +1,7 @@
+# Quick check and installs made on host system before build
+
+cat /boot/config-6.1.0-23 | grep CONFIG_UNIX98_PTYS
+
+# Additional installs on Debian
+
+sudo apt install gawk bison m4 texinfo
