@@ -1,0 +1,434 @@
+    1  mkdir -pv /{boot,home,mnt,opt,srv}
+    2  mkdir -pv /etc/{opt,sysconfig}
+    3  mkdir -pv /lib/firmware
+    4  mkdir -pv /media/{floppy,cdrom}
+    5  mkdir -pv /usr/{,local/}{include,src}
+    6  mkdir -pv /usr/local/{bin,lib,sbin}
+    7  mkdir -pv /usr/{,local/}share/{color,dict,doc,info,locale,man}
+    8  mkdir -pv /usr/{,local/}share/{misc,terminfo,zoneinfo}
+    9  mkdir -pv /usr/{,local/}share/man/man{1..8}
+   10  mkdir -pv /var/{cache,local,log,mail,opt,spool}
+   11  mkdir -pv /var/lib/{color,misc,locate}
+   12  ln -sfv /run /var/run
+   13  ln -sfv /run/lock /var/lock
+   14  install -dv -m 0750 /root
+   15  install -dv -m 1777 /tmp /var/tmp
+   16  ln -sv /proc/self/mounts /etc/mtab
+   17  cat > /etc/hosts << EOF
+   18  127.0.0.1  localhost $(hostname)
+   19  ::1        localhost
+   20  EOF
+   21  cat > /etc/passwd << "EOF"
+   22  root:x:0:0:root:/root:/bin/bash
+   23  bin:x:1:1:bin:/dev/null:/usr/bin/false
+   24  daemon:x:6:6:Daemon User:/dev/null:/usr/bin/false
+   25  messagebus:x:18:18:D-Bus Message Daemon User:/run/dbus:/usr/bin/false
+   26  uuidd:x:80:80:UUID Generation Daemon User:/dev/null:/usr/bin/false
+   27  nobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false
+   28  EOF
+   29  cat > /etc/group << "EOF"
+   30  root:x:0:
+   31  bin:x:1:daemon
+   32  sys:x:2:
+   33  kmem:x:3:
+   34  tape:x:4:
+   35  tty:x:5:
+   36  daemon:x:6:
+   37  floppy:x:7:
+   38  disk:x:8:
+   39  lp:x:9:
+   40  dialout:x:10:
+   41  audio:x:11:
+   42  video:x:12:
+   43  utmp:x:13:
+   44  cdrom:x:15:
+   45  adm:x:16:
+   46  messagebus:x:18:
+   47  input:x:24:
+   48  mail:x:34:
+   49  kvm:x:61:
+   50  uuidd:x:80:
+   51  wheel:x:97:
+   52  users:x:999:
+   53  nogroup:x:65534:
+   54  EOF
+   55  echo "tester:x:101:101::/home/tester:/bin/bash" >> /etc/passwd
+   56  echo "tester:x:101:" >> /etc/group
+   57  install -o tester -d /home/tester
+   58  exec /usr/bin/bash --login
+   59  touch /var/log/{btmp,lastlog,faillog,wtmp}
+   60  chgrp -v utmp /var/log/lastlog
+   61  chmod -v 664  /var/log/lastlog
+   62  chmod -v 600  /var/log/btmp
+   63  cd sources/
+   64  ls
+   65  which tar 
+   66  tar 
+   67  ls -l tar 
+   68  tar -xf gettext-0.22.4.tar.xz 
+   69  cd gettext-0.22.4
+   70  env
+   71  time { ./configure --disable-shared && make; } | tee /tools/loggs/gettext.log
+   72  cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin
+   73  cd ..
+   74  rm -rf gettext-0.22.4
+   75  tar -xf bison-3.8.2.tar.xz 
+   76  cd bison-3.8.2
+   77  time { ./configure --prefix=/usr             --docdir=/usr/share/doc/bison-3.8.2 && make && make install; } | tee /tools/loggs/bison.log
+   78  cd ..
+   79  rm -rf bison-3.8.2
+   80  tar xf perl-5.38.2.tar.xz 
+   81  cd perl-5.38.2
+   82  time { sh Configure -des                                                     -Dprefix=/usr                                            -Dvendorprefix=/usr                                      -Duseshrplib                                             -Dprivlib=/usr/lib/perl5/5.38/core_perl                  -Darchlib=/usr/lib/perl5/5.38/core_perl                  -Dsitelib=/usr/lib/perl5/5.38/site_perl                  -Dsitearch=/usr/lib/perl5/5.38/site_perl                 -Dvendorlib=/usr/lib/perl5/5.38/vendor_perl              -Dvendorarch=/usr/lib/perl5/5.38/vendor_perl && make && make install; } | tee /tools/loggs/perl.log
+   83  cd ..
+   84  rm -rf perl-5.38.2
+   85  tar xvf Python-3.12.5.tar.xz 
+   86  cd Python-3.12.5
+   87  time { ./configure --prefix=/usr               --enable-shared             --without-ensurepip && make && make install; } | tee /tools/loggs/python.log 
+   88  cd ..
+   89  rm -rf Python-3.12.5
+   90  tar xvf texinfo-7.1.tar.xz 
+   91  cd texinfo-7.1
+   92  time { ./configure --prefix=/usr && make && make install; } | tee /tools/loggs/texinfo.log
+   93  cd ..
+   94  rm -rf texinfo-7.1
+   95  tar -xf util-linux-2.39.3.tar.xz 
+   96  cd util-linux-2.39.3
+   97  mkdir -pv /var/lib/hwclock
+   98  time { ./configure --libdir=/usr/lib                --runstatedir=/run               --disable-chfn-chsh              --disable-login                  --disable-nologin                --disable-su                     --disable-setpriv                --disable-runuser                --disable-pylibmount             --disable-static                 --without-python                 ADJTIME_PATH=/var/lib/hwclock/adjtime             --docdir=/usr/share/doc/util-linux-2.39.3 && make && make install; } | tee /tools/loggs/util-linux.log
+   99  cd ..
+  100  rm -rf util-linux-2.39.3
+  101  cd /tools/loggs/
+  102  ls
+  103  mkdir chapter-7-Entering-Chroot-and-Building-Additional-Temporary-Tools 
+  104  ls
+  105  mv ./*.log chapter-7-Entering-Chroot-and-Building-Additional-Temporary-Tools/
+  106  ls
+  107  clear
+  108  cd /sources/
+  109  rm -rf /usr/share/{info,man,doc}/*
+  110  find /usr/{lib,libexec} -name \*.la -delete
+  111  rm -rf /tools
+  112  ls
+  113  ls /
+  114  exit
+  115  pwd
+  116  ls /home/
+  117  env
+  118  mkdir -p /loggs/chapter-8
+  119  ls
+  120  cd sources/
+  121  ls
+  122  cd /
+  123  ls
+  124  cd sources
+  125  tar -xf man-pages-6.06.tar.xz 
+  126  cd man-pages-6.06
+  127  rm -v man3/crypt*
+  128  time { make prefix=/usr install } | tee /loggs/chapter-8/man-pages.log
+  129  time { make prefix=/usr install; } | tee /loggs/chapter-8/man-pages.log
+  130  cd ..
+  131  rm man-pages-6.06
+  132  rm -rf man-pages-6.06
+  133  tar -xf iana-etc-20240125.tar.gz 
+  134  cd iana-etc-20240125
+  135  cp services protocols /etc
+  136  cd ..
+  137  rm -rf iana-etc-20240125
+  138  tar -xf glibc-2.40.tar.gz 
+  139  cd glibc-2.40
+  140  mkdir -v build && cd build
+  141  echo "rootsbindir=/usr/sbin" > configparms
+  142  time { ../configure --prefix=/usr                                         --disable-werror                                      --enable-kernel=4.19                                  --enable-stack-protector=strong                       --disable-nscd                                        libc_cv_slibdir=/usr/lib && make; } | tee /loggs/chapter-8/glibc.log
+  143  make check | tee /loggs/chapter-8/glibc.make-check.log 
+  144  grep "Timed out" -l $(find -name \*.out)
+  145  touch /etc/ld.so.conf
+  146  sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
+  147  time make install | tee /loggs/chapter-8/glibc.make-install.log
+  148  sed '/RTLDLIST=/s@/usr@@g' -i /usr/bin/ldd
+  149  mkdir -pv /usr/lib/locale
+  150  clear
+  151  localedef -i C -f UTF-8 C.UTF-8
+  152  localedef -i cs_CZ -f UTF-8 cs_CZ.UTF-8
+  153  localedef -i de_DE -f ISO-8859-1 de_DE
+  154  localedef -i de_DE@euro -f ISO-8859-15 de_DE@euro && localedef -i de_DE -f UTF-8 de_DE.UTF-8
+  155  localedef -i el_GR -f ISO-8859-7 el_GR && localedef -i en_GB -f ISO-8859-1 en_GB && localedef -i en_GB -f UTF-8 en_GB.UTF-8 && localedef -i en_HK -f ISO-8859-1 en_HK && localedef -i en_PH -f ISO-8859-1 en_PH && localedef -i en_US -f ISO-8859-1 en_US && localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i es_ES -f ISO-8859-15 es_ES@euro && localedef -i es_MX -f ISO-8859-1 es_MX && localedef -i fa_IR -f UTF-8 fa_IR && localedef -i fr_FR -f ISO-8859-1 fr_FR && localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro && localedef -i fr_FR -f UTF-8 fr_FR.UTF-8 && localedef -i is_IS -f ISO-8859-1 is_IS && localedef -i is_IS -f UTF-8 is_IS.UTF-8 && localedef -i it_IT -f ISO-8859-1 it_IT && localedef -i it_IT -f ISO-8859-15 it_IT@euro && localedef -i it_IT -f UTF-8 it_IT.UTF-8 && localedef -i ja_JP -f EUC-JP ja_JP
+  156  echo $?
+  157  localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
+  158  localedef -i ja_JP -f UTF-8 ja_JP.UTF-8 && localedef -i nl_NL@euro -f ISO-8859-15 nl_NL@euro && localedef -i ru_RU -f KOI8-R ru_RU.KOI8-R && localedef -i ru_RU -f UTF-8 ru_RU.UTF-8 && localedef -i se_NO -f UTF-8 se_NO.UTF-8 && localedef -i ta_IN -f UTF-8 ta_IN.UTF-8 && localedef -i tr_TR -f UTF-8 tr_TR.UTF-8 && localedef -i zh_CN -f GB18030 zh_CN.GB18030 && localedef -i zh_HK -f BIG5-HKSCS zh_HK.BIG5-HKSCS && localedef -i zh_TW -f UTF-8 zh_TW.UTF-8
+  159  echo $?
+  160  make localedata/install-locales | tee /loggs/chapter-8/glibc.make-localedata-install-locales.log
+  161  echo $?
+  162  localedef -i C -f UTF-8 C.UTF-8
+  163  localedef -i ja_JP -f SHIFT_JIS ja_JP.SJIS 2> /dev/null || true
+  164  cat > /etc/nsswitch.conf << "EOF"
+  165  # Begin /etc/nsswitch.conf
+  166  passwd: files
+  167  group: files
+  168  shadow: files
+  169  hosts: files dns
+  170  networks: files
+  171  protocols: files
+  172  services: files
+  173  ethers: files
+  174  rpc: files
+  175  # End /etc/nsswitch.conf
+  176  EOF
+  177  tar -xf ../../tzdata2024a.tar.gz 
+  178  ZONEINFO=/usr/share/zoneinfo
+  179  mkdir -pv $ZONEINFO/{posix,right}
+  180  for tz in etcetera southamerica northamerica europe africa antarctica            asia australasia backward; do     zic -L /dev/null   -d $ZONEINFO       ${tz};     zic -L /dev/null   -d $ZONEINFO/posix ${tz};     zic -L leapseconds -d $ZONEINFO/right ${tz}; done
+  181  cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
+  182  zic -d $ZONEINFO -p America/New_York
+  183  unset ZONEINFO
+  184  tzselect
+  185  ln -sfv /usr/share/zoneinfo/Australia/Perth /etc/localtime
+  186  cat > /etc/ld.so.conf << "EOF"
+  187  # Begin /etc/ld.so.conf
+  188  /usr/local/lib
+  189  /opt/lib
+  190  EOF
+  191  cat >> /etc/ld.so.conf << "EOF"
+  192  # Add an include directory
+  193  include /etc/ld.so.conf.d/*.conf
+  194  EOF
+  195  mkdir -pv /etc/ld.so.conf.d
+  196  cd ../..
+  197  rm -rf glibc-2.40
+  198  history
+  199  tar -xf zlib-1.3.1.tar.gz 
+  200  cd zlib-1.3.1
+  201  time { ./configure --prefix=/usr && make && make check && make install; } | tee /loggs/chapter-8/zlib.log
+  202  rm -fv /usr/lib/libz.a
+  203  cd ..
+  204  rm -rf zlib-1.3.1
+  205  tar -xf bzip2-1.0.8
+  206  tar -xf bzip2-1.0.8.tar.gz 
+  207  cd bzip2-1.0.8
+  208  patch -Np1 -i ../bzip2-1.0.8-install_docs-1.patch
+  209  sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
+  210  sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
+  211  make -f Makefile-libbz2_so
+  212  make clean
+  213  ls
+  214  time { make && make PREFIX=/usr install; } | tee /loggs/chapter-8/bzip2.log
+  215  cp -av libbz2.so.* /usr/lib
+  216  ln -sv libbz2.so.1.0.8 /usr/lib/libbz2.so
+  217  ls -l /usr/lib/libbz2.so
+  218  ls -l /usr/lib/libbz2.so
+  219  cp -v bzip2-shared /usr/bin/bzip2
+  220  for i in /usr/bin/{bzcat,bunzip2}; do   ln -sfv bzip2 $i; done
+  221  rm -fv /usr/lib/libbz2.a
+  222  cd ..
+  223  rm -rf bzip2-1.0.8
+  224  tar -xf xz-5.4.6.tar.xz 
+  225  cd xz-5.4.6
+  226  time { ./configure --prefix=/usr                --disable-static             --docdir=/usr/share/doc/xz-5.4.6 && make && make check && make install; } | tee /loggs/chapter-8/xz.log
+  227  cd ..
+  228  rm -rf xz-5.4.6
+  229  tar -xf zstd-1.5.5.tar.gz 
+  230  cd zstd-1.5.5
+  231  time { make prefix=/usr && make check && make prefix=/usr install; } | tee /loggs/chapter-8/zstd.log
+  232  rm -v /usr/lib/libzstd.a
+  233  cd ..
+  234  rm -rf zstd-1.5.5
+  235  tar -xf file-5.45.tar.gz 
+  236  cd file-5.45
+  237  time { ./configure --prefix=/usr && make && make check && make install; } | tee /loggs/chapter-8/file.log
+  238  cd ..
+  239  rm -rf file-5.45
+  240  history > /loggs/chapter-8/chroot-history-chapter-8-till-File-5-45.txt
+  241  rm /loggs/chapter-8/*
+  242  ls /loggs/chapter-8/
+  243  exit
+  244  cd sources/
+  245  ls logg
+  246  ls ls
+  247  cd ..
+  248  ls
+  249  ls loggs
+  250  ls loggs/chapter-8/
+  251  cd sources/
+  252  ls
+  253  tar -xf readline-8.2
+  254  tar -xf readline-8.2.tar.gz 
+  255  cd readline-8.2
+  256  sed -i '/MV.*old/d' Makefile.in
+  257  sed -i '/{OLDSUFF}/c:' support/shlib-install
+  258  patch -Np1 -i ../readline-8.2-upstream_fixes-3.patch
+  259  time { ./configure --prefix=/usr                --disable-static             --with-curses                --docdir=/usr/share/doc/readline-8.2 && make SHLIB_LIBS="-lncursesw" && make SHLIB_LIBS="-lncursesw" install; } | tee /loggs/chapter-8/readline.log
+  260  echo $?
+  261  install -v -m644 doc/*.{ps,pdf,html,dvi} /usr/share/doc/readline-8.2
+  262  cd ..
+  263  rm -rf readline-8.2
+  264  tar -xf m4-1.4.19.tar.xz 
+  265  cd m4-1.4.19
+  266  time { ./configure --prefix=/usr && make && make check && make install; } | tee /loggs/chapter-8/m4.log
+  267  cd ..
+  268  rm -rf m4-1.4.19
+  269  tar -xf bc-6.7.5.tar.xz 
+  270  CC=gcc ./configure --prefix=/usr -G -O3 -r | tee /loggs/chapter-8/bc-configure.log 
+  271  echo $CC
+  272  cd bc-6.7.5
+  273  CC=gcc ./configure --prefix=/usr -G -O3 -r | tee /loggs/chapter-8/bc-configure.log 
+  274  time { make && make test && make install; } | /loggs/chapter-8/bc-make-install.log
+  275  time { make && make test && make install; } | tee /loggs/chapter-8/bc-make-install.log
+  276  cd ..
+  277  rm bc-6.7.5
+  278  rm -rf bc-6.7.5
+  279  tar -xf flex-2.6.4.tar.gz 
+  280  cd flex-2.6.4
+  281  time { ./configure --prefix=/usr             --docdir=/usr/share/doc/flex-2.6.4             --disable-static && make && make check && make install; } | tee /loggs/chapter-8/flex.log
+  282  ln -sv flex   /usr/bin/lex
+  283  ln -sv flex.1 /usr/share/man/man1/lex.1
+  284  cd ..
+  285  rm -rf flex-2.6.4
+  286  tar -xf tcl8.6.13-src.tar.gz 
+  287  cd tcl8.6.13
+  288  SRCDIR=$(pwd)
+  289  cd unix
+  290  time { ./configure --prefix=/usr                       --mandir=/usr/share/man && make; } | tee /loggs/chapter-8/tcl-configure-make.log
+  291  sed -e "s|$SRCDIR/unix|/usr/lib|"     -e "s|$SRCDIR|/usr/include|"      -i tclConfig.sh
+  292  sed -e "s|$SRCDIR/unix/pkgs/tdbc1.1.5|/usr/lib/tdbc1.1.5|"     -e "s|$SRCDIR/pkgs/tdbc1.1.5/generic|/usr/include|"        -e "s|$SRCDIR/pkgs/tdbc1.1.5/library|/usr/lib/tcl8.6|"     -e "s|$SRCDIR/pkgs/tdbc1.1.5|/usr/include|"                -i pkgs/tdbc1.1.5/tdbcConfig.sh
+  293  sed -e "s|$SRCDIR/unix/pkgs/itcl4.2.3|/usr/lib/itcl4.2.3|"     -e "s|$SRCDIR/pkgs/itcl4.2.3/generic|/usr/include|"        -e "s|$SRCDIR/pkgs/itcl4.2.3|/usr/include|"                -i pkgs/itcl4.2.3/itclConfig.sh
+  294  unset SRCDIR
+  295  time { make test && make install; } | tee /loggs/chapter-8/tcl-make-install.log
+  296  chmod -v u+w /usr/lib/libtcl8.6.so
+  297  make install-private-headers | tee /loggs/chapter-8/tcl-install-private-headers.log
+  298  ln -sfv tclsh8.6 /usr/bin/tclsh
+  299  mv /usr/share/man/man3/{Thread,Tcl_Thread}.3
+  300  cd ..
+  301  tar -xf ../tcl8.6.13-html.tar.gz --strip-components=1
+  302  mkdir -v -p /usr/share/doc/tcl-8.6.13
+  303  cp -v -r  ./html/* /usr/share/doc/tcl-8.6.13
+  304  cd ..
+  305  rm -rf tcl8.6.13
+  306  tar -xf expect5.45.4.tar.gz 
+  307  cd expect5.45.4
+  308  python3 -c 'from pty import spawn; spawn(["echo", "ok"])'
+  309  time { ./configure --prefix=/usr                       --with-tcl=/usr/lib                 --enable-shared                     --mandir=/usr/share/man             --with-tclinclude=/usr/include && make && make test && make install; } | tee /loggs/chapter-8/expect.log
+  310  ln -svf expect5.45.4/libexpect5.45.4.so /usr/lib
+  311  cd ..
+  312  rm -rf expect5.45.4
+  313  clear
+  314  tar -xf dejagnu-1.6.3.tar.gz 
+  315  cd dejagnu-1.6.3
+  316  mkdir -v build && cd build
+  317  time { ../configure --prefix=/usr && makeinfo --html --no-split -o doc/dejagnu.html ../doc/dejagnu.texi && makeinfo --plaintext       -o doc/dejagnu.txt  ../doc/dejagnu.texi && make check && make install; } | tee /loggs/chapter-8/dejagnu.log
+  318  install -v -dm755  /usr/share/doc/dejagnu-1.6.3
+  319  install -v -m644   doc/dejagnu.{html,txt} /usr/share/doc/dejagnu-1.6.3
+  320  cd ../..
+  321  rm -rf dejagnu-1.6.3
+  322  tar -xf pkgconf-2.1.1.tar.xz 
+  323  cd pkgconf-2.1.1
+  324  time { ./configure --prefix=/usr                          --disable-static                       --docdir=/usr/share/doc/pkgconf-2.1.1 && make && make install; } | tee /loggs/chapter-8/pkgconf.log
+  325  ln -sv pkgconf   /usr/bin/pkg-config
+  326  ln -sv pkgconf.1 /usr/share/man/man1/pkg-config.1
+  327  cd ..
+  328  rm -rf pkgconf-2.1.1
+  329  tar -xf binutils-2.42.tar.xz 
+  330  cd binutils-2.42
+  331  mkdir -v build && cd build
+  332  time { ../configure --prefix=/usr                    --sysconfdir=/etc                --enable-gold                    --enable-ld=default              --enable-plugins                 --enable-shared                  --disable-werror                 --enable-64-bit-bfd              --with-system-zlib               --enable-default-hash-style=gnu && make tooldir=/usr && make -k check; } | tee /loggs/chapter-8/binutils-till-make-check.log
+  333  grep '^FAIL:' $(find -name '*.log')
+  334  make tooldir=/usr install | tee /loggs/chapter-8/binutils-make-install.log
+  335  rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,gprofng,opcodes,sframe}.a
+  336  cd ../..
+  337  rm -rf binutils-2.42
+  338  tar -xf gmp-6.3.0.tar.xz 
+  339  cd cd gmp-6.3.0
+  340  cd gmp-6.3.0
+  341  time { ./configure --prefix=/usr                --enable-cxx                 --disable-static             --docdir=/usr/share/doc/gmp-6.3.0 && make && make html; } | tee /loggs/chapter-8/gmp-till-make-html.log
+  342  make check 2>&1 | tee /loggs/chapter-8/gmp-check-log.log
+  343  awk '/# PASS:/{total+=$3} ; END{print total}' /loggs/chapter-8/gmp-check-log.log 
+  344  time { make install && make install-html;} | tee /loggs/chapter-8/gmp-make-install.log
+  345  cd ..
+  346  rm -rf gmp-6.3.0
+  347  tar -xf mpfr-4.2.1.tar.xz 
+  348  cd mpfr-4.2.1
+  349  time { ./configure --prefix=/usr                    --disable-static                 --enable-thread-safe             --docdir=/usr/share/doc/mpfr-4.2.1 && make && make html && make check && make install && make install-html; } tee /loggs/chapter-8/mpfr.log
+  350  time { ./configure --prefix=/usr                    --disable-static                 --enable-thread-safe             --docdir=/usr/share/doc/mpfr-4.2.1 && make && make html && make check && make install && make install-html; } | tee /loggs/chapter-8/mpfr.log
+  351  cd ..
+  352  rm -rf mpfr-4.2.1
+  353  tar -xvf mpc-1.3.1.tar.gz 
+  354  cd mpc-1.3.1
+  355  time { ./configure --prefix=/usr                --disable-static             --docdir=/usr/share/doc/mpc-1.3.1 && make && make html && make check && make install && make install-html; } | tee /loggs/chapter-8/mpc.log
+  356  cd ..
+  357  rm -rf mpc-1.3.1
+  358  tar -xf attr-2.5.2.tar.gz 
+  359  cd attr-2.5.2
+  360  time { ./configure --prefix=/usr                 --disable-static              --sysconfdir=/etc             --docdir=/usr/share/doc/attr-2.5.2 && make && make check && make install; } | tee /loggs/chapter-8/attr.log
+  361  cd ..
+  362  rm -rf attr-2.5.2
+  363  tar -xf acl-2.3.2.tar.xz 
+  364  time { ./configure --prefix=/usr                     --disable-static                  --docdir=/usr/share/doc/acl-2.3.2 && make && make install; } | tee /loggs/chapter-8/acl.log
+  365  cd acl-2.3.2
+  366  time { ./configure --prefix=/usr                     --disable-static                  --docdir=/usr/share/doc/acl-2.3.2 && make && make install; } | tee /loggs/chapter-8/acl.log
+  367  cd ..
+  368  rm -rf acl-2.3.2
+  369  ls
+  370  tar -xf libcap-2.69.tar.xz 
+  371  cd libcap-2.69
+  372  sed -i '/install -m.*STA/d' libcap/Makefile
+  373  make prefix=/usr lib=lib
+  374  make test
+  375  make prefix=/usr lib=lib install
+  376  cd ..
+  377  rm -rf libcap-2.69
+  378  tar -xf libxcrypt-4.4.36.tar.xz 
+  379  cd libxcrypt-4.4.36
+  380  time { ./configure --prefix=/usr                            --enable-hashes=strong,glibc             --enable-obsolete-api=no                 --disable-static                         --disable-failure-tokens && make && make check && make install; } | tee /loggs/libxcrypt.log
+  381  cd ..
+  382  rm -rf libxcrypt-4.4.36
+  383  tar -xf shadow-4.14.5.tar.xz 
+  384  cd shadow-4.14.5
+  385  sed -i 's/groups$(EXEEXT) //' src/Makefile.in
+  386  find man -name Makefile.in -exec sed -i 's/groups\.1 / /'   {} \;
+  387  find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
+  388  find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
+  389  sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD YESCRYPT:'     -e 's:/var/spool/mail:/var/mail:'                       -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                      -i etc/login.defs
+  390  touch /usr/bin/passwd
+  391  time { ./configure --sysconfdir=/etc               --disable-static                --with-{b,yes}crypt             --without-libbsd                --with-group-name-max-length=32 && make; } | tee /loggs/chapter-8/shadow-make.log
+  392  make exec_prefix=/usr install | tee /loggs/chapter-8/shadow-make-install.log
+  393  make -C man install-man
+  394  pwconv
+  395  grpconv
+  396  mkdir -p /etc/default
+  397  useradd -D --gid 999
+  398  sed -i '/MAIL/s/yes/no/' /etc/default/useradd
+  399  passwd root
+  400  cd ..
+  401  rm -rf shadow-4.14.5
+  402  tar -xf gcc-13.2.0.tar.xz 
+  403  cd gcc-13.2.0
+  404  case $(uname -m) in   x86_64)     sed -e '/m64=/s/lib64/lib/'         -i.orig gcc/config/i386/t-linux64;   ;; esac
+  405  mkdir -v build && cd build
+  406  time { ../configure --prefix=/usr                         LD=ld                                 --enable-languages=c,c++              --enable-default-pie                  --enable-default-ssp                  --disable-multilib                    --disable-bootstrap                   --disable-fixincludes                 --with-system-zlib && make; } | tee /loggs/chapter-8/gcc-make.log 
+  407  ulimit -s 32768
+  408  chown -R tester .
+  409  su tester -c "PATH=$PATH make -k check"
+  410  ../contrib/test_summary | tee /loggs/chapter-8/gcc-tests.log
+  411  ../contrib/test_summary | gre -A7 Summ
+  412  ../contrib/test_summary | grep -A7 Summ
+  413  ../contrib/test_summary | grep -A7 Summ | tee /loggs/chapter-8/gcc-test-summary.log
+  414  ../contrib/test_summary | less
+  415  ../contrib/test_summary 
+  416  make install | tee /loggs/chapter-8/gcc-make-install.log
+  417  chown -v -R root:root     /usr/lib/gcc/$(gcc -dumpmachine)/13.2.0/include{,-fixed}
+  418  ln -svr /usr/bin/cpp /usr/lib
+  419  ln -sv gcc.1 /usr/share/man/man1/cc.1
+  420  ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/13.2.0/liblto_plugin.so         /usr/lib/bfd-plugins/
+  421  echo 'int main(){}' > dummy.c
+  422  cc dummy.c -v -Wl,--verbose &> dummy.log
+  423  readelf -l a.out | grep ': /lib' | tee /loggs/chapter-8/gcc-sanity-check.log
+  424  grep -E -o '/usr/lib.*/S?crt[1in].*succeeded' dummy.log
+  425  grep -B4 '^ /usr/include' dummy.log
+  426  grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g'
+  427  grep "/lib.*/libc.so.6 " dummy.log
+  428  grep found dummy.log
+  429  rm -v dummy.c a.out dummy.log
+  430  mkdir -pv /usr/share/gdb/auto-load/usr/lib
+  431  mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
+  432  cd ..
+  433  cd ..
+  434  history > /loggs/chapter-8/chroot-history-till--Ncurses-6.4-20230520--Chapter-8.txt

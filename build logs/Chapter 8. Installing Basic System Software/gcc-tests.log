@@ -1,0 +1,119 @@
+cat <<'EOF' |
+LAST_UPDATED: Obtained from git: releases/gcc-13.2.0 revision c891d8dc23e1a46ad9f3e757d09e57b500d40044
+
+Native configuration is x86_64-pc-linux-gnu
+
+		=== g++ tests ===
+
+
+Running target unix
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtollOOBTest Strtol(array + 3, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtollOOBTest Strtol(array - 1, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtollOOBTest Strtol(array, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtollOOBTest Strtol(array, NULL, 36) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtollOOBTest Strtol(array, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtollOOBTest Strtol(array, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtollOOBTest Strtol(array, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtolOOBTest Strtol(array + 3, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtolOOBTest Strtol(array - 1, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtolOOBTest Strtol(array, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtolOOBTest Strtol(array, NULL, 36) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtolOOBTest Strtol(array, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtolOOBTest Strtol(array, NULL, 0) execution test
+FAIL: g++.dg/asan/asan_test.C   -O2  AddressSanitizer_StrtolOOBTest Strtol(array, NULL, 0) execution test
+FAIL: g++.dg/asan/interception-malloc-test-1.C   -O0  execution test
+FAIL: g++.dg/asan/interception-malloc-test-1.C   -O1  execution test
+FAIL: g++.dg/asan/interception-malloc-test-1.C   -O2  execution test
+FAIL: g++.dg/asan/interception-malloc-test-1.C   -O3 -g  execution test
+FAIL: g++.dg/asan/interception-malloc-test-1.C   -Os  execution test
+FAIL: g++.dg/asan/interception-malloc-test-1.C   -O2 -flto -fno-use-linker-plugin -flto-partition=none  execution test
+FAIL: g++.dg/asan/interception-malloc-test-1.C   -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects  execution test
+
+		=== g++ Summary ===
+
+# of expected passes		237387
+# of unexpected failures	21
+# of expected failures		2071
+# of unsupported tests		10456
+/sources/gcc-13.2.0/build/gcc/xg++  version 13.2.0 (GCC) 
+
+		=== gcc tests ===
+
+
+Running target unix
+FAIL: gcc.dg/analyzer/data-model-4.c (test for excess errors)
+FAIL: gcc.dg/analyzer/torture/conftest-1.c   -O0  (test for excess errors)
+FAIL: gcc.dg/analyzer/torture/conftest-1.c   -O1  (test for excess errors)
+FAIL: gcc.dg/analyzer/torture/conftest-1.c   -O2  (test for excess errors)
+FAIL: gcc.dg/analyzer/torture/conftest-1.c   -O3 -g  (test for excess errors)
+FAIL: gcc.dg/analyzer/torture/conftest-1.c   -Os  (test for excess errors)
+FAIL: gcc.dg/analyzer/torture/conftest-1.c   -O2 -flto -fno-use-linker-plugin -flto-partition=none  (test for excess errors)
+FAIL: gcc.dg/pr56837.c scan-tree-dump-times optimized "memset ..c, 68, 16384.;" 1
+
+		=== gcc Summary ===
+
+# of expected passes		184920
+# of unexpected failures	8
+# of expected failures		1436
+# of unsupported tests		2461
+/sources/gcc-13.2.0/build/gcc/xgcc  version 13.2.0 (GCC) 
+
+		=== libatomic tests ===
+
+
+Running target unix
+
+		=== libatomic Summary ===
+
+# of expected passes		54
+		=== libgomp tests ===
+
+
+Running target unix
+
+		=== libgomp Summary ===
+
+# of expected passes		5118
+# of expected failures		32
+# of unsupported tests		355
+		=== libitm tests ===
+
+
+Running target unix
+
+		=== libitm Summary ===
+
+# of expected passes		44
+# of expected failures		3
+# of unsupported tests		1
+		=== libstdc++ tests ===
+
+
+Running target unix
+FAIL: 23_containers/vector/bool/allocator/copy.cc (test for excess errors)
+
+		=== libstdc++ Summary ===
+
+# of expected passes		15677
+# of unexpected failures	1
+# of expected failures		106
+# of unsupported tests		381
+
+Compiler version: 13.2.0 (GCC) 
+Platform: x86_64-pc-linux-gnu
+configure flags: --prefix=/usr LD=ld --enable-languages=c,c++ --enable-default-pie --enable-default-ssp --disable-multilib --disable-bootstrap --disable-fixincludes --with-system-zlib
+EOF
+Mail -s "Results for 13.2.0 (GCC) testsuite on x86_64-pc-linux-gnu" gcc-testresults@gcc.gnu.org &&
+mv /sources/gcc-13.2.0/build/./gcc/testsuite/g++/g++.sum /sources/gcc-13.2.0/build/./gcc/testsuite/g++/g++.sum.sent &&
+mv /sources/gcc-13.2.0/build/./gcc/testsuite/gcc/gcc.sum /sources/gcc-13.2.0/build/./gcc/testsuite/gcc/gcc.sum.sent &&
+mv /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.sum /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.sum.sent &&
+mv /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.sum /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.sum.sent &&
+mv /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libitm/testsuite/libitm.sum /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libitm/testsuite/libitm.sum.sent &&
+mv /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.sum /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.sum.sent &&
+mv /sources/gcc-13.2.0/build/./gcc/testsuite/g++/g++.log /sources/gcc-13.2.0/build/./gcc/testsuite/g++/g++.log.sent &&
+mv /sources/gcc-13.2.0/build/./gcc/testsuite/gcc/gcc.log /sources/gcc-13.2.0/build/./gcc/testsuite/gcc/gcc.log.sent &&
+mv /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.log /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.log.sent &&
+mv /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.log /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.log.sent &&
+mv /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libitm/testsuite/libitm.log /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libitm/testsuite/libitm.log.sent &&
+mv /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.log /sources/gcc-13.2.0/build/./x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.log.sent &&
+true

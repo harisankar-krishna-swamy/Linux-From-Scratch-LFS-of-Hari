@@ -1,0 +1,52 @@
+		=== g++ Summary ===
+
+# of expected passes		237387
+# of unexpected failures	21
+# of expected failures		2071
+# of unsupported tests		10456
+/sources/gcc-13.2.0/build/gcc/xg++  version 13.2.0 (GCC) 
+
+--
+		=== gcc Summary ===
+
+# of expected passes		184920
+# of unexpected failures	8
+# of expected failures		1436
+# of unsupported tests		2461
+/sources/gcc-13.2.0/build/gcc/xgcc  version 13.2.0 (GCC) 
+
+--
+		=== libatomic Summary ===
+
+# of expected passes		54
+		=== libgomp tests ===
+
+
+Running target unix
+
+		=== libgomp Summary ===
+
+# of expected passes		5118
+# of expected failures		32
+# of unsupported tests		355
+		=== libitm tests ===
+
+
+--
+		=== libitm Summary ===
+
+# of expected passes		44
+# of expected failures		3
+# of unsupported tests		1
+		=== libstdc++ tests ===
+
+
+--
+		=== libstdc++ Summary ===
+
+# of expected passes		15677
+# of unexpected failures	1
+# of expected failures		106
+# of unsupported tests		381
+
+Compiler version: 13.2.0 (GCC) 
