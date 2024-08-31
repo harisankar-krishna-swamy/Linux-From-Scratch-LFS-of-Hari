@@ -26,7 +26,7 @@ Enable configs `CONFIG_FB_VESA=y` `CONFIG_FB_EFI=y` `CONFIG_FB_SIMPLE=y` and rec
 Editing config manually results in make reverting changes as dependant configs are alse needed.  
 So use config using `make menuconfig` and Navigate to `> Console drivers > Frame-buffer support > VESA VGA graphics console`
 
-Links to fix issue: 
+Links to fix issue:  
 https://superuser.com/questions/1744258/no-kernel-output-after-booting-lfs  
 https://www.linuxquestions.org/questions/linux-general-1/config_fb_vesa-42125/
 
