@@ -1,0 +1,51 @@
+make  all-recursive
+make[1]: Entering directory '/sources/popt-1.19'
+Making all in src
+make[2]: Entering directory '/sources/popt-1.19/src'
+/bin/sh ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I..  -I. -I.. -DPOPT_SYSCONFDIR="\"/usr/etc\""   -g -O2 -MT popt.lo -MD -MP -MF .deps/popt.Tpo -c -o popt.lo popt.c
+/bin/sh ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I..  -I. -I.. -DPOPT_SYSCONFDIR="\"/usr/etc\""   -g -O2 -MT poptparse.lo -MD -MP -MF .deps/poptparse.Tpo -c -o poptparse.lo poptparse.c
+/bin/sh ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I..  -I. -I.. -DPOPT_SYSCONFDIR="\"/usr/etc\""   -g -O2 -MT poptconfig.lo -MD -MP -MF .deps/poptconfig.Tpo -c -o poptconfig.lo poptconfig.c
+/bin/sh ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I..  -I. -I.. -DPOPT_SYSCONFDIR="\"/usr/etc\""   -g -O2 -MT popthelp.lo -MD -MP -MF .deps/popthelp.Tpo -c -o popthelp.lo popthelp.c
+/bin/sh ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I..  -I. -I.. -DPOPT_SYSCONFDIR="\"/usr/etc\""   -g -O2 -MT poptint.lo -MD -MP -MF .deps/poptint.Tpo -c -o poptint.lo poptint.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I.. -I. -I.. -DPOPT_SYSCONFDIR=\"/usr/etc\" -g -O2 -MT popthelp.lo -MD -MP -MF .deps/popthelp.Tpo -c popthelp.c  -fPIC -DPIC -o .libs/popthelp.o
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I.. -I. -I.. -DPOPT_SYSCONFDIR=\"/usr/etc\" -g -O2 -MT poptconfig.lo -MD -MP -MF .deps/poptconfig.Tpo -c poptconfig.c  -fPIC -DPIC -o .libs/poptconfig.o
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I.. -I. -I.. -DPOPT_SYSCONFDIR=\"/usr/etc\" -g -O2 -MT poptparse.lo -MD -MP -MF .deps/poptparse.Tpo -c poptparse.c  -fPIC -DPIC -o .libs/poptparse.o
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I.. -I. -I.. -DPOPT_SYSCONFDIR=\"/usr/etc\" -g -O2 -MT popt.lo -MD -MP -MF .deps/popt.Tpo -c popt.c  -fPIC -DPIC -o .libs/popt.o
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I.. -I. -I.. -DPOPT_SYSCONFDIR=\"/usr/etc\" -g -O2 -MT poptint.lo -MD -MP -MF .deps/poptint.Tpo -c poptint.c  -fPIC -DPIC -o .libs/poptint.o
+mv -f .deps/poptparse.Tpo .deps/poptparse.Plo
+mv -f .deps/poptint.Tpo .deps/poptint.Plo
+mv -f .deps/poptconfig.Tpo .deps/poptconfig.Plo
+mv -f .deps/popthelp.Tpo .deps/popthelp.Plo
+mv -f .deps/popt.Tpo .deps/popt.Plo
+/bin/sh ../libtool  --tag=CC   --mode=link gcc  -g -O2 -no-undefined -version-info 0:2:0 -Wl,--version-script=../src/libpopt.vers  -o libpopt.la -rpath /usr/lib popt.lo poptparse.lo poptconfig.lo popthelp.lo poptint.lo  
+libtool: link: gcc -shared  -fPIC -DPIC  .libs/popt.o .libs/poptparse.o .libs/poptconfig.o .libs/popthelp.o .libs/poptint.o    -g -O2 -Wl,--version-script=../src/libpopt.vers   -Wl,-soname -Wl,libpopt.so.0 -o .libs/libpopt.so.0.0.2
+libtool: link: (cd ".libs" && rm -f "libpopt.so.0" && ln -s "libpopt.so.0.0.2" "libpopt.so.0")
+libtool: link: (cd ".libs" && rm -f "libpopt.so" && ln -s "libpopt.so.0.0.2" "libpopt.so")
+libtool: link: ( cd ".libs" && rm -f "libpopt.la" && ln -s "../libpopt.la" "libpopt.la" )
+make[2]: Leaving directory '/sources/popt-1.19/src'
+Making all in po
+make[2]: Entering directory '/sources/popt-1.19/po'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/sources/popt-1.19/po'
+Making all in tests
+make[2]: Entering directory '/sources/popt-1.19/tests'
+gcc -DHAVE_CONFIG_H -I. -I..  -I. -I../src   -g -O2 -MT test1.o -MD -MP -MF .deps/test1.Tpo -c -o test1.o test1.c
+gcc -DHAVE_CONFIG_H -I. -I..  -I. -I../src   -g -O2 -MT test2.o -MD -MP -MF .deps/test2.Tpo -c -o test2.o test2.c
+gcc -DHAVE_CONFIG_H -I. -I..  -I. -I../src   -g -O2 -MT tdict.o -MD -MP -MF .deps/tdict.Tpo -c -o tdict.o tdict.c
+gcc -DHAVE_CONFIG_H -I. -I..  -I. -I../src   -g -O2 -MT test3.o -MD -MP -MF .deps/test3.Tpo -c -o test3.o test3.c
+mv -f .deps/test3.Tpo .deps/test3.Po
+/bin/sh ../libtool  --tag=CC   --mode=link gcc  -g -O2   -o test3 test3.o ../src/libpopt.la 
+mv -f .deps/test2.Tpo .deps/test2.Po
+/bin/sh ../libtool  --tag=CC   --mode=link gcc  -g -O2   -o test2 test2.o ../src/libpopt.la 
+mv -f .deps/test1.Tpo .deps/test1.Po
+/bin/sh ../libtool  --tag=CC   --mode=link gcc  -g -O2   -o test1 test1.o ../src/libpopt.la 
+mv -f .deps/tdict.Tpo .deps/tdict.Po
+/bin/sh ../libtool  --tag=CC   --mode=link gcc  -g -O2   -o tdict tdict.o ../src/libpopt.la 
+libtool: link: gcc -g -O2 -o .libs/test3 test3.o  ../src/.libs/libpopt.so
+libtool: link: gcc -g -O2 -o .libs/test2 test2.o  ../src/.libs/libpopt.so
+libtool: link: gcc -g -O2 -o .libs/test1 test1.o  ../src/.libs/libpopt.so
+libtool: link: gcc -g -O2 -o .libs/tdict tdict.o  ../src/.libs/libpopt.so
+make[2]: Leaving directory '/sources/popt-1.19/tests'
+make[2]: Entering directory '/sources/popt-1.19'
+make[2]: Leaving directory '/sources/popt-1.19'
+make[1]: Leaving directory '/sources/popt-1.19'

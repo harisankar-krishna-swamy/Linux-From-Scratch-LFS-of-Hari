@@ -1,0 +1,6 @@
+/usr/bin/install -o root -g root -m 644 sysklogd.8 /usr/share/man/man8/sysklogd.8
+/usr/bin/install -m 500 -s syslogd /sbin/syslogd
+/usr/bin/install -o root -g root -m 644 syslogd.8 /usr/share/man/man8/syslogd.8
+/usr/bin/install -o root -g root -m 644 syslog.conf.5 /usr/share/man/man5/syslog.conf.5
+/usr/bin/install -o root -g root -m 644 klogd.8 /usr/share/man/man8/klogd.8
+/usr/bin/install -m 500 -s klogd /sbin/klogd

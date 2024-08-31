@@ -1,0 +1,341 @@
+Making install in gnulib/lib
+make[1]: Entering directory '/sources/texinfo-7.1/gnulib/lib'
+make  install-recursive
+make[2]: Entering directory '/sources/texinfo-7.1/gnulib/lib'
+make[3]: Entering directory '/sources/texinfo-7.1/gnulib/lib'
+make[4]: Entering directory '/sources/texinfo-7.1/gnulib/lib'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/sources/texinfo-7.1/gnulib/lib'
+make[3]: Leaving directory '/sources/texinfo-7.1/gnulib/lib'
+make[2]: Leaving directory '/sources/texinfo-7.1/gnulib/lib'
+make[1]: Leaving directory '/sources/texinfo-7.1/gnulib/lib'
+Making install in info
+make[1]: Entering directory '/sources/texinfo-7.1/info'
+make  install-am
+make[2]: Entering directory '/sources/texinfo-7.1/info'
+make[3]: Entering directory '/sources/texinfo-7.1/info'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/usr/bin'
+  /usr/bin/install -c ginfo '/usr/bin/./info'
+make[3]: Leaving directory '/sources/texinfo-7.1/info'
+make[2]: Leaving directory '/sources/texinfo-7.1/info'
+make[1]: Leaving directory '/sources/texinfo-7.1/info'
+Making install in install-info
+make[1]: Entering directory '/sources/texinfo-7.1/install-info'
+Making install in .
+make[2]: Entering directory '/sources/texinfo-7.1/install-info'
+make[3]: Entering directory '/sources/texinfo-7.1/install-info'
+make[3]: Nothing to be done for 'install-data-am'.
+ /usr/bin/mkdir -p '/usr/bin'
+  /usr/bin/install -c ginstall-info '/usr/bin/./install-info'
+make[3]: Leaving directory '/sources/texinfo-7.1/install-info'
+make[2]: Leaving directory '/sources/texinfo-7.1/install-info'
+Making install in tests
+make[2]: Entering directory '/sources/texinfo-7.1/install-info/tests'
+make[3]: Entering directory '/sources/texinfo-7.1/install-info/tests'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/sources/texinfo-7.1/install-info/tests'
+make[2]: Leaving directory '/sources/texinfo-7.1/install-info/tests'
+make[1]: Leaving directory '/sources/texinfo-7.1/install-info'
+Making install in po
+make[1]: Entering directory '/sources/texinfo-7.1/po'
+installing ca.gmo as /usr/share/locale/ca/LC_MESSAGES/texinfo.mo
+installing cs.gmo as /usr/share/locale/cs/LC_MESSAGES/texinfo.mo
+installing da.gmo as /usr/share/locale/da/LC_MESSAGES/texinfo.mo
+installing de.gmo as /usr/share/locale/de/LC_MESSAGES/texinfo.mo
+installing el.gmo as /usr/share/locale/el/LC_MESSAGES/texinfo.mo
+installing eo.gmo as /usr/share/locale/eo/LC_MESSAGES/texinfo.mo
+installing es.gmo as /usr/share/locale/es/LC_MESSAGES/texinfo.mo
+installing fi.gmo as /usr/share/locale/fi/LC_MESSAGES/texinfo.mo
+installing fr.gmo as /usr/share/locale/fr/LC_MESSAGES/texinfo.mo
+installing he.gmo as /usr/share/locale/he/LC_MESSAGES/texinfo.mo
+installing hr.gmo as /usr/share/locale/hr/LC_MESSAGES/texinfo.mo
+installing hu.gmo as /usr/share/locale/hu/LC_MESSAGES/texinfo.mo
+installing id.gmo as /usr/share/locale/id/LC_MESSAGES/texinfo.mo
+installing it.gmo as /usr/share/locale/it/LC_MESSAGES/texinfo.mo
+installing ja.gmo as /usr/share/locale/ja/LC_MESSAGES/texinfo.mo
+installing ka.gmo as /usr/share/locale/ka/LC_MESSAGES/texinfo.mo
+installing nb.gmo as /usr/share/locale/nb/LC_MESSAGES/texinfo.mo
+installing nl.gmo as /usr/share/locale/nl/LC_MESSAGES/texinfo.mo
+installing pl.gmo as /usr/share/locale/pl/LC_MESSAGES/texinfo.mo
+installing pt.gmo as /usr/share/locale/pt/LC_MESSAGES/texinfo.mo
+installing pt_BR.gmo as /usr/share/locale/pt_BR/LC_MESSAGES/texinfo.mo
+installing ro.gmo as /usr/share/locale/ro/LC_MESSAGES/texinfo.mo
+installing ru.gmo as /usr/share/locale/ru/LC_MESSAGES/texinfo.mo
+installing rw.gmo as /usr/share/locale/rw/LC_MESSAGES/texinfo.mo
+installing sk.gmo as /usr/share/locale/sk/LC_MESSAGES/texinfo.mo
+installing sl.gmo as /usr/share/locale/sl/LC_MESSAGES/texinfo.mo
+installing sr.gmo as /usr/share/locale/sr/LC_MESSAGES/texinfo.mo
+installing sv.gmo as /usr/share/locale/sv/LC_MESSAGES/texinfo.mo
+installing tr.gmo as /usr/share/locale/tr/LC_MESSAGES/texinfo.mo
+installing uk.gmo as /usr/share/locale/uk/LC_MESSAGES/texinfo.mo
+installing vi.gmo as /usr/share/locale/vi/LC_MESSAGES/texinfo.mo
+installing zh_CN.gmo as /usr/share/locale/zh_CN/LC_MESSAGES/texinfo.mo
+installing zh_TW.gmo as /usr/share/locale/zh_TW/LC_MESSAGES/texinfo.mo
+if test "texinfo" = "gettext-tools"; then \
+  /usr/bin/mkdir -p /usr/share/gettext/po; \
+  for file in Makefile.in.in remove-potcdate.sin quot.sed boldquot.sed en@quot.header en@boldquot.header insert-header.sin Rules-quot   Makevars.template; do \
+    /usr/bin/install -c -m 644 ./$file \
+		    /usr/share/gettext/po/$file; \
+  done; \
+  for file in Makevars; do \
+    rm -f /usr/share/gettext/po/$file; \
+  done; \
+else \
+  : ; \
+fi
+make[1]: Leaving directory '/sources/texinfo-7.1/po'
+Making install in po_document
+make[1]: Entering directory '/sources/texinfo-7.1/po_document'
+installing ca.gmo as /usr/share/locale/ca/LC_MESSAGES/texinfo_document.mo
+installing ca.us-ascii.gmo as /usr/share/locale/ca.us-ascii/LC_MESSAGES/texinfo_document.mo
+installing cs.gmo as /usr/share/locale/cs/LC_MESSAGES/texinfo_document.mo
+installing de.gmo as /usr/share/locale/de/LC_MESSAGES/texinfo_document.mo
+installing de.us-ascii.gmo as /usr/share/locale/de.us-ascii/LC_MESSAGES/texinfo_document.mo
+installing eo.gmo as /usr/share/locale/eo/LC_MESSAGES/texinfo_document.mo
+installing es.gmo as /usr/share/locale/es/LC_MESSAGES/texinfo_document.mo
+installing fi.gmo as /usr/share/locale/fi/LC_MESSAGES/texinfo_document.mo
+installing fr.gmo as /usr/share/locale/fr/LC_MESSAGES/texinfo_document.mo
+installing hr.gmo as /usr/share/locale/hr/LC_MESSAGES/texinfo_document.mo
+installing hu.gmo as /usr/share/locale/hu/LC_MESSAGES/texinfo_document.mo
+installing it.gmo as /usr/share/locale/it/LC_MESSAGES/texinfo_document.mo
+installing nl.gmo as /usr/share/locale/nl/LC_MESSAGES/texinfo_document.mo
+installing no.us-ascii.gmo as /usr/share/locale/no.us-ascii/LC_MESSAGES/texinfo_document.mo
+installing pl.gmo as /usr/share/locale/pl/LC_MESSAGES/texinfo_document.mo
+installing pl.iso-8859-2.gmo as /usr/share/locale/pl.iso-8859-2/LC_MESSAGES/texinfo_document.mo
+installing pt.gmo as /usr/share/locale/pt/LC_MESSAGES/texinfo_document.mo
+installing pt.us-ascii.gmo as /usr/share/locale/pt.us-ascii/LC_MESSAGES/texinfo_document.mo
+installing pt_BR.gmo as /usr/share/locale/pt_BR/LC_MESSAGES/texinfo_document.mo
+installing pt_BR.us-ascii.gmo as /usr/share/locale/pt_BR.us-ascii/LC_MESSAGES/texinfo_document.mo
+installing ro.gmo as /usr/share/locale/ro/LC_MESSAGES/texinfo_document.mo
+installing sk.gmo as /usr/share/locale/sk/LC_MESSAGES/texinfo_document.mo
+installing sr.gmo as /usr/share/locale/sr/LC_MESSAGES/texinfo_document.mo
+installing sv.gmo as /usr/share/locale/sv/LC_MESSAGES/texinfo_document.mo
+installing uk.gmo as /usr/share/locale/uk/LC_MESSAGES/texinfo_document.mo
+if test "texinfo" = "gettext-tools"; then \
+  /usr/bin/mkdir -p /usr/share/gettext/po; \
+  for file in Makefile.in.in remove-potcdate.sin quot.sed boldquot.sed en@quot.header en@boldquot.header insert-header.sin Rules-quot   Makevars.template; do \
+    /usr/bin/install -c -m 644 ./$file \
+		    /usr/share/gettext/po/$file; \
+  done; \
+  for file in Makevars; do \
+    rm -f /usr/share/gettext/po/$file; \
+  done; \
+else \
+  : ; \
+fi
+make[1]: Leaving directory '/sources/texinfo-7.1/po_document'
+Making install in tp
+make[1]: Entering directory '/sources/texinfo-7.1/tp'
+Making install in Texinfo/XS
+make[2]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+make  install-recursive
+make[3]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+Making install in gnulib/lib
+make[4]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS/gnulib/lib'
+make  install-recursive
+make[5]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS/gnulib/lib'
+make[6]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS/gnulib/lib'
+make[7]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS/gnulib/lib'
+make[7]: Nothing to be done for 'install-exec-am'.
+make[7]: Nothing to be done for 'install-data-am'.
+make[7]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS/gnulib/lib'
+make[6]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS/gnulib/lib'
+make[5]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS/gnulib/lib'
+make[4]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS/gnulib/lib'
+make[4]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+make[5]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+make[5]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/share/texinfo/Texinfo/XS/parsetexi'
+ /usr/bin/install -c -m 644 parsetexi/Parsetexi.pm '/usr/share/texinfo/Texinfo/XS/parsetexi'
+ /usr/bin/mkdir -p '/usr/lib/texinfo'
+ /bin/sh ./libtool   --mode=install /usr/bin/install -c   XSParagraph.la TestXS.la MiscXS.la Parsetexi.la '/usr/lib/texinfo'
+libtool: install: /usr/bin/install -c .libs/XSParagraph.so /usr/lib/texinfo/XSParagraph.so
+libtool: install: /usr/bin/install -c .libs/XSParagraph.lai /usr/lib/texinfo/XSParagraph.la
+libtool: install: /usr/bin/install -c .libs/TestXS.so /usr/lib/texinfo/TestXS.so
+libtool: install: /usr/bin/install -c .libs/TestXS.lai /usr/lib/texinfo/TestXS.la
+libtool: install: /usr/bin/install -c .libs/MiscXS.so /usr/lib/texinfo/MiscXS.so
+libtool: install: /usr/bin/install -c .libs/MiscXS.lai /usr/lib/texinfo/MiscXS.la
+libtool: install: /usr/bin/install -c .libs/Parsetexi.so /usr/lib/texinfo/Parsetexi.so
+libtool: install: /usr/bin/install -c .libs/Parsetexi.lai /usr/lib/texinfo/Parsetexi.la
+libtool: finish: PATH="/usr/bin:/usr/sbin:/sbin" ldconfig -n /usr/lib/texinfo
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/lib/texinfo
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+make  install-data-hook
+make[6]: Entering directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+rm -f /usr/lib/texinfo/TestXS*
+make[6]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+make[5]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+make[4]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+make[3]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+make[2]: Leaving directory '/sources/texinfo-7.1/tp/Texinfo/XS'
+Making install in .
+make[2]: Entering directory '/sources/texinfo-7.1/tp'
+make[3]: Entering directory '/sources/texinfo-7.1/tp'
+if test no != 'yes' ; then \
+  /usr/bin/mkdir -p /usr/share/texinfo/lib/libintl-perl/lib/Locale/Recode \
+    /usr/share/texinfo/lib/libintl-perl/lib/Locale/RecodeData; \
+  /usr/bin/install -c -m 644 ./maintain/lib/libintl-perl/lib/Locale/*.pm \
+    /usr/share/texinfo/lib/libintl-perl/lib/Locale; \
+  /usr/bin/install -c -m 644 ./maintain/lib/libintl-perl/lib/Locale/Recode/*.pm \
+    /usr/share/texinfo/lib/libintl-perl/lib/Locale/Recode; \
+  /usr/bin/install -c -m 644 ./maintain/lib/libintl-perl/lib/Locale/RecodeData/*.pm \
+    /usr/share/texinfo/lib/libintl-perl/lib/Locale/RecodeData; \
+fi
+ /usr/bin/mkdir -p '/usr/bin'
+ /usr/bin/mkdir -p '/usr/share/texinfo/Texinfo/Convert'
+ /usr/bin/mkdir -p '/usr/share/texinfo/DebugTexinfo'
+ /usr/bin/mkdir -p '/usr/share/texinfo/ext'
+ /usr/bin/mkdir -p '/usr/share/texinfo/init'
+ /usr/bin/mkdir -p '/usr/share/texinfo/Texinfo'
+ /usr/bin/mkdir -p '/usr/share/texinfo/Texinfo'
+ /usr/bin/install -c texi2any '/usr/bin'
+ /usr/bin/install -c -m 644 init/book.pm init/chm.pm init/documentation_examples.pm init/html32.pm '/usr/share/texinfo/init'
+ /usr/bin/install -c -m 644 DebugTexinfo/DebugTree.pm '/usr/share/texinfo/DebugTexinfo'
+ /usr/bin/install -c -m 644 ext/epub3.pm ext/highlight_syntax.pm ext/tex4ht.pm ext/latex2html.pm '/usr/share/texinfo/ext'
+ /usr/bin/install -c -m 644 Texinfo/ModulePath.pm Texinfo/Commands.pm '/usr/share/texinfo/Texinfo'
+ /usr/bin/install -c -m 644 Texinfo/Convert/Converter.pm Texinfo/Convert/DocBook.pm Texinfo/Convert/HTML.pm Texinfo/Convert/IXIN.pm Texinfo/Convert/IXINSXML.pm Texinfo/Convert/Info.pm Texinfo/Convert/LaTeX.pm Texinfo/Convert/NodeNameNormalization.pm Texinfo/Convert/Paragraph.pm Texinfo/Convert/ParagraphNonXS.pm Texinfo/Convert/PlainTexinfo.pm Texinfo/Convert/Plaintext.pm Texinfo/Convert/Texinfo.pm Texinfo/Convert/TexinfoMarkup.pm Texinfo/Convert/TexinfoSXML.pm Texinfo/Convert/TexinfoXML.pm Texinfo/Convert/Text.pm Texinfo/Convert/TextContent.pm Texinfo/Convert/Unicode.pm Texinfo/Convert/Utils.pm '/usr/share/texinfo/Texinfo/Convert'
+ /usr/bin/install -c -m 644 Texinfo/Config.pm Texinfo/Parser.pm Texinfo/ParserNonXS.pm Texinfo/Report.pm Texinfo/Common.pm Texinfo/Commands.pod Texinfo/Structuring.pm Texinfo/Transformations.pm Texinfo/Translations.pm Texinfo/MiscXS.pm Texinfo/XSLoader.pm Texinfo/Documentlanguages.pm '/usr/share/texinfo/Texinfo'
+make  install-exec-hook
+make[4]: Entering directory '/sources/texinfo-7.1/tp'
+makeinfo_f=`echo makeinfo | sed -e 's,x,x,'`; rm -f /usr/bin/$makeinfo_f
+makeinfo_f=`echo makeinfo | sed -e 's,x,x,'`; texi2any_f=`echo texi2any| sed -e 's,x,x,'`; ln -s $texi2any_f /usr/bin/$makeinfo_f
+if test no != 'yes' ; then \
+  /usr/bin/mkdir -p /usr/share/texinfo/lib/Unicode-EastAsianWidth/lib/Unicode; \
+  /usr/bin/install -c -m 644 ./maintain/lib/Unicode-EastAsianWidth/lib/Unicode/EastAsianWidth.pm \
+   /usr/share/texinfo/lib/Unicode-EastAsianWidth/lib/Unicode; \
+fi
+make[4]: Leaving directory '/sources/texinfo-7.1/tp'
+if test no != 'yes' ; then \
+  /usr/bin/mkdir -p /usr/share/texinfo/lib/Text-Unidecode/lib/Text/Unidecode; \
+  /usr/bin/install -c -m 644 ./maintain/lib/Text-Unidecode/lib/Text/Unidecode.pm \
+    /usr/share/texinfo/lib/Text-Unidecode/lib/Text; \
+  /usr/bin/install -c -m 644 ./maintain/lib/Text-Unidecode/lib/Text/Unidecode/*.pm \
+    /usr/share/texinfo/lib/Text-Unidecode/lib/Text/Unidecode; \
+fi
+make[3]: Leaving directory '/sources/texinfo-7.1/tp'
+make[2]: Leaving directory '/sources/texinfo-7.1/tp'
+Making install in tests
+make[2]: Entering directory '/sources/texinfo-7.1/tp/tests'
+Making install in .
+make[3]: Entering directory '/sources/texinfo-7.1/tp/tests'
+make[4]: Entering directory '/sources/texinfo-7.1/tp/tests'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/sources/texinfo-7.1/tp/tests'
+make[3]: Leaving directory '/sources/texinfo-7.1/tp/tests'
+Making install in many_input_files
+make[3]: Entering directory '/sources/texinfo-7.1/tp/tests/many_input_files'
+make[4]: Entering directory '/sources/texinfo-7.1/tp/tests/many_input_files'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/sources/texinfo-7.1/tp/tests/many_input_files'
+make[3]: Leaving directory '/sources/texinfo-7.1/tp/tests/many_input_files'
+make[2]: Leaving directory '/sources/texinfo-7.1/tp/tests'
+make[1]: Leaving directory '/sources/texinfo-7.1/tp'
+Making install in Pod-Simple-Texinfo
+make[1]: Entering directory '/sources/texinfo-7.1/Pod-Simple-Texinfo'
+make[2]: Entering directory '/sources/texinfo-7.1/Pod-Simple-Texinfo'
+ /usr/bin/mkdir -p '/usr/bin'
+ /usr/bin/mkdir -p '/usr/share/texinfo/Pod-Simple-Texinfo/Pod/Simple/'
+ /usr/bin/install -c pod2texi '/usr/bin'
+ /usr/bin/install -c -m 644 lib/Pod/Simple/Texinfo.pm '/usr/share/texinfo/Pod-Simple-Texinfo/Pod/Simple/'
+make[2]: Leaving directory '/sources/texinfo-7.1/Pod-Simple-Texinfo'
+make[1]: Leaving directory '/sources/texinfo-7.1/Pod-Simple-Texinfo'
+Making install in texindex
+make[1]: Entering directory '/sources/texinfo-7.1/texindex'
+make[2]: Entering directory '/sources/texinfo-7.1/texindex'
+ /usr/bin/mkdir -p '/usr/bin'
+ /usr/bin/mkdir -p '/usr/share/texinfo'
+ /usr/bin/install -c texindex '/usr/bin'
+ /usr/bin/install -c texindex.awk '/usr/share/texinfo'
+make[2]: Leaving directory '/sources/texinfo-7.1/texindex'
+make[1]: Leaving directory '/sources/texinfo-7.1/texindex'
+Making install in util
+make[1]: Entering directory '/sources/texinfo-7.1/util'
+make[2]: Entering directory '/sources/texinfo-7.1/util'
+ /usr/bin/mkdir -p '/usr/bin'
+ /usr/bin/mkdir -p '/usr/share/texinfo'
+ /usr/bin/install -c -m 644 htmlxref.cnf texinfo.dtd '/usr/share/texinfo'
+ /usr/bin/install -c texi2dvi texi2pdf pdftexi2dvi '/usr/bin'
+make[2]: Leaving directory '/sources/texinfo-7.1/util'
+make[1]: Leaving directory '/sources/texinfo-7.1/util'
+Making install in doc
+make[1]: Entering directory '/sources/texinfo-7.1/doc'
+Making install in tp_api
+make[2]: Entering directory '/sources/texinfo-7.1/doc/tp_api'
+make  install-am
+make[3]: Entering directory '/sources/texinfo-7.1/doc/tp_api'
+make[4]: Entering directory '/sources/texinfo-7.1/doc/tp_api'
+make[4]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/share/info'
+ /usr/bin/install -c -m 644 ./texi2any_internals.info '/usr/share/info'
+ install-info --info-dir='/usr/share/info' '/usr/share/info/texi2any_internals.info'
+make[4]: Leaving directory '/sources/texinfo-7.1/doc/tp_api'
+make[3]: Leaving directory '/sources/texinfo-7.1/doc/tp_api'
+make[2]: Leaving directory '/sources/texinfo-7.1/doc/tp_api'
+make[2]: Entering directory '/sources/texinfo-7.1/doc'
+make[3]: Entering directory '/sources/texinfo-7.1/doc'
+make[3]: Nothing to be done for 'install-exec-am'.
+
+WARNING: If your texmf tree does not already contain
+         up-to-date versions, you must install
+ /usr/bin/mkdir -p '/usr/share/info'
+             texinfo.tex and txi-??.tex manually,
+         perhaps in TEXMF/tex/texinfo/,
+         where TEXMF is a root of your TeX tree.
+         See INSTALL for some considerations.
+         You can run make TEXMF=/your/texmf install-tex to do this.
+
+         You may also need to install epsf.tex in
+ /usr/bin/install -c -m 644 ./texinfo.info ./texinfo.info-1 ./texinfo.info-2 ./texinfo.info-3 ./info-stnd.info ./texi2any_api.info '/usr/share/info'
+         TEXMF/tex/generic/dvips, if your TeX
+         installation did not include it.
+ install-info --info-dir='/usr/share/info' '/usr/share/info/texinfo.info'
+ install-info --info-dir='/usr/share/info' '/usr/share/info/info-stnd.info'
+ install-info --info-dir='/usr/share/info' '/usr/share/info/texi2any_api.info'
+make[3]: Leaving directory '/sources/texinfo-7.1/doc'
+make[2]: Leaving directory '/sources/texinfo-7.1/doc'
+make[1]: Leaving directory '/sources/texinfo-7.1/doc'
+Making install in man
+make[1]: Entering directory '/sources/texinfo-7.1/man'
+make[2]: Entering directory '/sources/texinfo-7.1/man'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/share/man/man1'
+ /usr/bin/mkdir -p '/usr/share/man/man5'
+ /usr/bin/install -c -m 644 info.5 texinfo.5 '/usr/share/man/man5'
+ /usr/bin/install -c -m 644 install-info.1 makeinfo.1 texindex.1 texi2dvi.1 info.1 pod2texi.1 texi2any.1 texi2pdf.1 pdftexi2dvi.1 '/usr/share/man/man1'
+make[2]: Leaving directory '/sources/texinfo-7.1/man'
+make[1]: Leaving directory '/sources/texinfo-7.1/man'
+Making install in js
+make[1]: Entering directory '/sources/texinfo-7.1/js'
+make[2]: Entering directory '/sources/texinfo-7.1/js'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/share/texinfo/js'
+ /usr/bin/install -c -m 644 modernizr.js info.js info.css '/usr/share/texinfo/js'
+make[2]: Leaving directory '/sources/texinfo-7.1/js'
+make[1]: Leaving directory '/sources/texinfo-7.1/js'
+make[1]: Entering directory '/sources/texinfo-7.1'
+make[2]: Entering directory '/sources/texinfo-7.1'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/sources/texinfo-7.1'
+make[1]: Leaving directory '/sources/texinfo-7.1'

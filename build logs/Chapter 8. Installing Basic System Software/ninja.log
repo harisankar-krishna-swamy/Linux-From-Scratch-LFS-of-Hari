@@ -1,0 +1,46 @@
+[1/32] INLINE build/browse_py.h
+[2/32] CXX build/browse.o
+[3/32] CXX build/clparser.o
+[4/32] CXX build/debug_flags.o
+[5/32] CXX build/build_log.o
+[6/32] CXX build/clean.o
+[7/32] CXX build/depfile_parser.o
+[8/32] CXX build/disk_interface.o
+[9/32] CXX build/deps_log.o
+[10/32] CXX build/edit_distance.o
+[11/32] CXX build/dyndep.o
+[12/32] CXX build/build.o
+[13/32] CXX build/dyndep_parser.o
+[14/32] CXX build/json.o
+[15/32] CXX build/graphviz.o
+[16/32] CXX build/eval_env.o
+[17/32] CXX build/line_printer.o
+[18/32] CXX build/lexer.o
+[19/32] CXX build/metrics.o
+[20/32] CXX build/parser.o
+[21/32] CXX build/graph.o
+[22/32] CXX build/missing_deps.o
+[23/32] CXX build/manifest_parser.o
+[24/32] CXX build/status.o
+[25/32] CXX build/string_piece_util.o
+[26/32] CXX build/version.o
+[27/32] CXX build/state.o
+[28/32] CXX build/subprocess-posix.o
+[29/32] CXX build/util.o
+[30/32] CXX build/ninja.o
+src/ninja.cc: In constructor ‘{anonymous}::DeferGuessParallelism::DeferGuessParallelism(BuildConfig*)’:
+src/ninja.cc:1405:16: warning: ‘{anonymous}::DeferGuessParallelism::config’ will be initialized after [-Wreorder]
+ 1405 |   BuildConfig* config;
+      |                ^~~~~~
+src/ninja.cc:1404:8: warning:   ‘bool {anonymous}::DeferGuessParallelism::needGuess’ [-Wreorder]
+ 1404 |   bool needGuess;
+      |        ^~~~~~~~~
+src/ninja.cc:1407:3: warning:   when initialized here [-Wreorder]
+ 1407 |   DeferGuessParallelism(BuildConfig* config)
+      |   ^~~~~~~~~~~~~~~~~~~~~
+[31/32] AR build/libninja.a
+[32/32] LINK ninja
+bootstrapping ninja...
+warning: A compatible version of re2c (>= 0.11.3) was not found; changes to src/*.in.cc will not affect your build.
+wrote build.ninja.
+bootstrap complete.  rebuilding...
