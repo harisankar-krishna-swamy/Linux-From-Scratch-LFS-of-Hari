@@ -1,0 +1,500 @@
+   10  cd ..
+   11  rm -rf procps-ng-4.0.4
+   12  tar -xf util-linux-2.39.3.tar.xz 
+   13  cd util-linux-2.39.3
+   14  sed -i '/test_mkfds/s/^/#/' tests/helpers/Makemodule.am
+   15  ./configure --bindir=/usr/bin                --libdir=/usr/lib                --runstatedir=/run               --sbindir=/usr/sbin              --disable-chfn-chsh              --disable-login                  --disable-nologin                --disable-su                     --disable-setpriv                --disable-runuser                --disable-pylibmount             --disable-static                 --without-python                 --without-systemd                --without-systemdsystemunitdir                    ADJTIME_PATH=/var/lib/hwclock/adjtime             --docdir=/usr/share/doc/util-linux-2.39.3 && make | tee /loggs/chapter-8/util-linux-make.log
+   16  chown -R tester .
+   17  su tester -c "make -k check"
+   18  make install
+   19  cd ..
+   20  rm -rf util-linux-2.39.3
+   21  tar -xf e2fsprogs-1.47.0.tar.gz 
+   22  cd e2fsprogs-1.47.0
+   23  mkdir -v build && cd build
+   24  ../configure --prefix=/usr                        --sysconfdir=/etc                    --enable-elf-shlibs                  --disable-libblkid                   --disable-libuuid                    --disable-uuidd                      --disable-fsck && make && make check && make install | tee /loggs/chapter-8/e2fsprogs.log
+   25  make install
+   26  rm -fv /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
+   27  gunzip -v /usr/share/info/libext2fs.info.gz
+   28  install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info
+   29  makeinfo -o      doc/com_err.info ../lib/et/com_err.texinfo
+   30  install -v -m644 doc/com_err.info /usr/share/info
+   31  install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info
+   32  sed 's/metadata_csum_seed,//' -i /etc/mke2fs.conf
+   33  cd ../..
+   34  rm -rf e2fsprogs-1.47.0
+   35  tar -xf sysklogd-1.5.1.tar.gz 
+   36  cd sysklogd-1.5.1
+   37  sed -i '/Error loading kernel symbols/{n;n;d}' ksym_mod.c
+   38  sed -i 's/union wait/int/' syslogd.c
+   39  make
+   40  make BINDIR=/sbin install | tee /loggs/chapter-8/sysklogd.log
+   41  cat > /etc/syslog.conf << "EOF"
+   42  # Begin /etc/syslog.conf
+   43  auth,authpriv.* -/var/log/auth.log
+   44  *.*;auth,authpriv.none -/var/log/sys.log
+   45  daemon.* -/var/log/daemon.log
+   46  kern.* -/var/log/kern.log
+   47  mail.* -/var/log/mail.log
+   48  user.* -/var/log/user.log
+   49  *.emerg *
+   50  # End /etc/syslog.conf
+   51  EOF
+   52  cd ..
+   53  rm -rf sysklogd-1.5.1
+   54  tar -xf sysvinit-3.08
+   55  tar -xf sysvinit-3.08.tar.xz 
+   56  cd sysvinit-3.08
+   57  patch -Np1 -i ../sysvinit-3.08-consolidated-1.patch
+   58  make && make install | grep /loggs/chapter-8/sysvinit.log
+   59  cd ..
+   60  rm -rf /tmp/
+   61  ls /tmp
+   62  ls /
+   63  mkdir -p /tmp
+   64  ls /
+   65  ls -l /
+   66  cd /
+   67  ls -l
+   68  chmod -v a+wt /tmp
+   69  ls -l
+   70  cd sources/
+   71  find /usr/lib /usr/libexec -name \*.la 
+   72  find /usr/lib /usr/libexec -name \*.la -delete
+   73  find /usr -depth -name $(uname -m)-lfs-linux-gnu\* 
+   74  find /usr -depth -name $(uname -m)-lfs-linux-gnu\* | xargs rm -rf
+   75  find /usr -depth -name $(uname -m)-lfs-linux-gnu\* 
+   76  which gcc
+   77  gcc
+   78  gcc --version
+   79  userdel -r tester
+   80  cat /etc/passwd
+   81  clear
+   82  ls -l
+   83  rm -rf gcc-13.2.0
+   84  find . -type d
+   85  rm -rf sysvinit-3.08
+   86  find . -type d
+   87  exit
+   88  cd sources
+   89  cd /etc/sysconfig/
+   90  cat > ifconfig.eth0 << "EOF"
+   91  ONBOOT=yes
+   92  IFACE=eth0
+   93  SERVICE=ipv4-static
+   94  IP=192.168.1.2
+   95  GATEWAY=192.168.1.1
+   96  PREFIX=24
+   97  BROADCAST=192.168.1.255
+   98  EOF
+   99  vi ifconfig.eth0 
+  100  cat > /etc/resolv.conf << "EOF"
+  101  # Begin /etc/resolv.conf
+  102  domain alley
+  103  nameserver 208.67.220.220
+  104  nameserver 208.67.222.222
+  105  # End /etc/resolv.conf
+  106  EOF
+  107  cat /etc/resolv.conf 
+  108  echo "harilfs" > /etc/hostname
+  109  cat > /etc/hosts << "EOF"
+  110  # Begin /etc/hosts
+  111  127.0.0.1 localhost.alley localhost
+  112  127.0.1.1 alley.harilfs harilfs
+  113  10.0.0.11 alley.harilfs harilfs
+  114  ::1       localhost ip6-localhost ip6-loopback
+  115  ff02::1   ip6-allnodes
+  116  ff02::2   ip6-allrouters
+  117  # End /etc/hosts
+  118  EOF
+  119  cat /etc/host
+  120  cat /etc/hosts
+  121  ls
+  122  cd /sources/
+  123  tar -xf lfs-bootscripts-20230728.tar.xz 
+  124  cd lfs-bootscripts-20230728
+  125  ls
+  126  ls -l
+  127  ls -l lfs/
+  128  make install | tee /loggs/chapter-8/lfs-bootscripts.log
+  129  cd ..
+  130  cd /
+  131  cat /etc/hosts
+  132  cat > /etc/inittab << "EOF"
+  133  # Begin /etc/inittab
+  134  id:3:initdefault:
+  135  si::sysinit:/etc/rc.d/init.d/rc S
+  136  l0:0:wait:/etc/rc.d/init.d/rc 0
+  137  l1:S1:wait:/etc/rc.d/init.d/rc 1
+  138  l2:2:wait:/etc/rc.d/init.d/rc 2
+  139  l3:3:wait:/etc/rc.d/init.d/rc 3
+  140  l4:4:wait:/etc/rc.d/init.d/rc 4
+  141  l5:5:wait:/etc/rc.d/init.d/rc 5
+  142  l6:6:wait:/etc/rc.d/init.d/rc 6
+  143  ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
+  144  su:S06:once:/sbin/sulogin
+  145  s1:1:respawn:/sbin/sulogin
+  146  1:2345:respawn:/sbin/agetty --noclear tty1 9600
+  147  2:2345:respawn:/sbin/agetty tty2 9600
+  148  3:2345:respawn:/sbin/agetty tty3 9600
+  149  4:2345:respawn:/sbin/agetty tty4 9600
+  150  5:2345:respawn:/sbin/agetty tty5 9600
+  151  6:2345:respawn:/sbin/agetty tty6 9600
+  152  # End /etc/inittab
+  153  EOF
+  154  cat /etc/inittab
+  155  hwclock --localtime --show
+  156  cat > /etc/sysconfig/clock << "EOF"
+  157  # Begin /etc/sysconfig/clock
+  158  UTC=1
+  159  # Set this to any options you might need to give to hwclock,
+  160  # such as machine hardware clock type for Alphas.
+  161  CLOCKPARAMS=
+  162  # End /etc/sysconfig/clock
+  163  EOF
+  164  cat > /etc/sysconfig/console << "EOF"
+  165  # Begin /etc/sysconfig/console
+  166  UNICODE="1"
+  167  FONT="Lat2-Terminus16"
+  168  # End /etc/sysconfig/console
+  169  EOF
+  170  cat /etc/sysconfig/createfiles
+  171  vi /etc/sysconfig/rc.site
+  172  clear
+  173  locale -a
+  174  LC_ALL=en_US.iso88591 locale charmap
+  175  LC_ALL=en_US.iso88591 locale language
+  176  LC_ALL=en_US.iso88591 locale charmap
+  177  LC_ALL=en_US.iso88591 locale int_curr_symbol
+  178  LC_ALL=en_US.iso88591 locale int_prefix
+  179  locale -a
+  180  cat > /etc/profile << "EOF"
+  181  # Begin /etc/profile
+  182  for i in $(locale); do
+  183    unset ${i%=*}
+  184  done
+  185  if [[ "$TERM" = linux ]]; then
+  186    export LANG=C.UTF-8
+  187  else
+  188    export LANG=en_US.ISO-8859-1
+  189  fi
+  190  # End /etc/profile
+  191  EOF
+  192  cat > /etc/inputrc << "EOF"
+  193  # Begin /etc/inputrc
+  194  # Modified by Chris Lynn <roryo@roryo.dynup.net>
+  195  # Allow the command prompt to wrap to the next line
+  196  set horizontal-scroll-mode Off
+  197  # Enable 8-bit input
+  198  set meta-flag On
+  199  set input-meta On
+  200  # Turns off 8th bit stripping
+  201  set convert-meta Off
+  202  # Keep the 8th bit for display
+  203  set output-meta On
+  204  # none, visible or audible
+  205  set bell-style none
+  206  # All of the following map the escape sequence of the value
+  207  # contained in the 1st argument to the readline specific functions
+  208  "\eOd": backward-word
+  209  "\eOc": forward-word
+  210  # for linux console
+  211  "\e[1~": beginning-of-line
+  212  "\e[4~": end-of-line
+  213  "\e[5~": beginning-of-history
+  214  "\e[6~": end-of-history
+  215  "\e[3~": delete-char
+  216  "\e[2~": quoted-insert
+  217  # for xterm
+  218  "\eOH": beginning-of-line
+  219  "\eOF": end-of-line
+  220  # for Konsole
+  221  "\e[H": beginning-of-line
+  222  "\e[F": end-of-line
+  223  # End /etc/inputrc
+  224  EOF
+  225  cat /etc/inputrc 
+  226  clear
+  227  cat > /etc/shells << "EOF"
+  228  # Begin /etc/shells
+  229  /bin/sh
+  230  /bin/bash
+  231  # End /etc/shells
+  232  EOF
+  233  cat > /etc/fstab << "EOF"
+  234  # Begin /etc/fstab
+  235  # file system  mount-point    type     options             dump  fsck
+  236  #                                                                order
+  237  /dev/sda2      /              ext4     defaults            1     1
+  238  proc           /proc          proc     nosuid,noexec,nodev 0     0
+  239  sysfs          /sys           sysfs    nosuid,noexec,nodev 0     0
+  240  devpts         /dev/pts       devpts   gid=5,mode=620      0     0
+  241  tmpfs          /run           tmpfs    defaults            0     0
+  242  devtmpfs       /dev           devtmpfs mode=0755,nosuid    0     0
+  243  tmpfs          /dev/shm       tmpfs    nosuid,nodev        0     0
+  244  cgroup2        /sys/fs/cgroup cgroup2  nosuid,noexec,nodev 0     0
+  245  # End /etc/fstab
+  246  EOF
+  247  cat /etc/fstab 
+  248  cd sources/
+  249  ls
+  250  clear
+  251  tar -xf linux-6.7.4.tar.xz 
+  252  cd linux-6.7.4
+  253  make mrproper
+  254  make menuconfig
+  255  ls -la
+  256  make
+  257  make clean
+  258  ls -la
+  259  make clean | tee /loggs/kernel-make.log
+  260  make | tee /loggs/kernel-make.log
+  261  echo $?
+  262  make modules_install | tee /loggs/kernel-modules_install.log 
+  263  cp -iv arch/x86/boot/bzImage /boot/vmlinuz-6.7.4-lfs-12.1
+  264  cp -iv System.map /boot/System.map-6.7.4
+  265  cp -iv .config /boot/config-6.7.4
+  266  cp -r Documentation -T /usr/share/doc/linux-6.7.4
+  267  cd ..
+  268  ls -l
+  269  chown -R 0:0 linux-6.7.4
+  270  ls -l linux-6.7.4
+  271  install -v -m755 -d /etc/modprobe.d
+  272  cat > /etc/modprobe.d/usb.conf << "EOF"
+  273  # Begin /etc/modprobe.d/usb.conf
+  274  install ohci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i ohci_hcd ; true
+  275  install uhci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i uhci_hcd ; true
+  276  # End /etc/modprobe.d/usb.conf
+  277  EOF
+  278  cat /etc/fstab 
+  279  ls /boot
+  280  grub-install /dev/sda
+  281  ls /boot
+  282  vi /etc/fstab 
+  283  cd /
+  284  ls
+  285  ls -l boot
+  286  mv boot _boot
+  287  mkdir boot
+  288  ls -l boot _boot
+  289  ls  boot _boot
+  290  ls -l
+  291  ls -l | grep boot
+  292  cp _boot/* /boot/
+  293  ls -l boot/
+  294  mount /boot
+  295  mount
+  296  ls -l /boot
+  297  cp _boot/* /boot/
+  298  ls -l /boot
+  299  umount /boot
+  300  ls -l /boot
+  301  cd boot
+  302  ls
+  303  rm -rf ./*
+  304  cd ..
+  305  mount /boot
+  306  ls -l /boot
+  307  df -h
+  308  cat /etc/modprobe.d/usb.conf
+  309  grub-install /dev/sda
+  310  mkdir -p /boot/efi
+  311  grub-install /dev/sda
+  312  ls /boot/
+  313  ls -l /boot/
+  314  grub-install /dev/sda
+  315  mount
+  316  ls /boot/efi/EFI/grub/grubx64.efi 
+  317  cat /etc/fstab
+  318  grub-install --efi-dir=/boot/efi
+  319  grub-install --efi-dir=/boot/efi /dev/sda
+  320  ls /
+  321  ls /usr/bin/
+  322  cd sources
+  323  tar -xf efibootmgr-18.tar.gz 
+  324  cd efibootmgr-18
+  325  make EFIDIR=LFS EFI_LOADER=grubx64.efi
+  326  make install EFIDIR=LFS
+  327  cd ..
+  328  rm -rf efibootmgr-18
+  329  ls /usr/bin
+  330  grub-install --efi-dir=/boot/efi /dev/sda
+  331  grub-install --efi-dir=/boot/efi/EFI /dev/sda
+  332  ls /boot/efi/EFI
+  333  cd /boot/efi/EFI/
+  334  ls
+  335  ls -l
+  336  rm -rf EFI/
+  337  efibootmgr -h
+  338  ls
+  339  cd ..
+  340  ls
+  341  cd ..
+  342  ls
+  343  rm -rf efi grub
+  344  ls
+  345  cd /sources/
+  346  tar -xf efibootmgr-18.tar.gz 
+  347  cd efibootmgr-18
+  348  make EFI_LOADER=grubx64.efi
+  349  cd ..
+  350  rm -rf efibootmgr-18
+  351  cd /
+  352  ls /boot
+  353  ls /boot
+  354  cd sources/
+  355  tar -xf efibootmgr-18.tar.gz 
+  356  cd efibootmgr-18
+  357  make EFIDIR=LFS EFI_LOADER=grubx64.efi
+  358  ls /boot
+  359  make install EFIDIR=LFS
+  360  ls -l /usr/sbin/efibootmgr 
+  361  cd ..
+  362  rm -rf efibootmgr-18
+  363  cd /
+  364  ls /boot
+  365  grub-install --efi-dir=/boot/efi/EFI/LFS /dev/sda
+  366  mkdir -p /boot/efi/EFI/LFS
+  367  ls /boot
+  368  grub-install --efi-dir=/boot/efi/EFI/LFS /dev/sda
+  369  cd /boot
+  370  ls
+  371  rm -rf efi grub
+  372  ls
+  373  grub-install --target=x86_64-efi --efi-directory=/boot --removable
+  374  ls
+  375  ls EFI/
+  376  ls EFI/BOOT/
+  377  cd ..
+  378  cat > /boot/grub/grub.cfg << "EOF"
+  379  # Begin /boot/grub/grub.cfg
+  380  set default=0
+  381  set timeout=5
+  382  insmod part_gpt
+  383  insmod ext2
+  384  set root=(hd0,2)
+  385  menuentry "GNU/Linux, Linux 6.7.4-lfs-12.1" {
+  386          linux   /boot/vmlinuz-6.7.4-lfs-12.1 root=/dev/sda2 ro
+  387  }
+  388  EOF
+  389  ls -l /boot/grub/
+  390  cat /boot/grub/grub.cfg 
+  391  ls -l /boot/vmlinuz-6.7.4-lfs-12.1
+  392  echo 12.1 > /etc/lfs-release
+  393  cat > /etc/lsb-release << "EOF"
+  394  DISTRIB_ID="Linux From Scratch"
+  395  DISTRIB_RELEASE="12.1"
+  396  DISTRIB_CODENAME="Harisankar_K_S"
+  397  DISTRIB_DESCRIPTION="Linux From Scratch"
+  398  EOF
+  399  cat > /etc/os-release << "EOF"
+  400  NAME="Linux From Scratch"
+  401  VERSION="12.1"
+  402  ID=lfs
+  403  PRETTY_NAME="Linux From Scratch 12.1"
+  404  VERSION_CODENAME="Harisankar_K_S"
+  405  HOME_URL="https://www.linuxfromscratch.org/lfs/"
+  406  EOF
+  407  cat /etc/os-release 
+  408  cat /etc/lsb-release 
+  409  logout
+  410  clear
+  411  ls
+  412  ls boot/
+  413  mount /boot
+  414  ls boot/
+  415  ls /boot/
+  416  ls -l
+  417  cd ..
+  418  ls -l boot/
+  419  ls -l boot/
+  420  cat /boot/grub/grub.cfg 
+  421  ls -l /boot
+  422  cd boot/
+  423  ls
+  424  ls -l
+  425  chmod og+r vmlinuz-6.7.4-lfs-12.1 
+  426  ls -l
+  427  chmod og+r vmlinuz-6.7.4-lfs-12.1 
+  428  ls -l
+  429  ls -l /sources/linux-6.7.4/arch/x86_64/boot/bzImage 
+  430  ls -l /sources/linux-6.7.4/arch/x86/boot/bzImage 
+  431  cd /sources/linux-6.7.4
+  432  cp -iv arch/x86/boot/bzImage /boot/vmlinuz-6.7.4-lfs-12.1
+  433  ls -l /boot/
+  434  ls /boot//boot/vmlinuz-6.7.4-lfs-12.1
+  435  ls /boot/vmlinuz-6.7.4-lfs-12.1
+  436  cat /etc/fstab 
+  437  history
+  438  mount
+  439  cd /boot/grub
+  440  ls
+  441  mv grub.cfg _grub.cfg
+  442  grub-mkconfig -o /boot/grub/grub.cfg
+  443  cat grub.cfg 
+  444  ls -l /
+  445  exit
+  446  ls /var/log/faillog 
+  447  less /var/log/faillog 
+  448  cat /var/log/faillog 
+  449  cat /var/log/lastlog 
+  450  dmesg
+  451  clear
+  452  mount /boot
+  453  cat /boot/grub/grub.cfg 
+  454  cd /sources/linux-6.7.4
+  455  vi .config 
+  456  cp .config .config.bak
+  457  make clean
+  458  vi .config 
+  459  vi .config 
+  460  make
+  461  echo $?
+  462  make modules_install
+  463  mount
+  464  cp -iv arch/x86/boot/bzImage /boot/vmlinuz-6.7.4-lfs-12.1
+  465  cp -iv System.map /boot/System.map-6.7.4
+  466  cp -iv .config /boot/config-6.7.4
+  467  cp -r Documentation -T /usr/share/doc/linux-6.7.4
+  468  cd /
+  469  history | grep grub
+  470  grub-install --target=x86_64-efi --efi-directory=/boot --removable
+  471  grub-mkconfig -o /boot/grub/grub.cfg
+  472  cat /boot/config-6.7.4 | grep _FB_
+  473  cat /boot/config-6.7.4 | grep VESA
+  474  cat /sources/linux-6.7.4/.config | grep VESA
+  475  cat /sources/linux-6.7.4/.config.old | grep VESA
+  476  cd /sources/linux-6.7.4
+  477  ls
+  478  diff .config .config.bak 
+  479  diff .config .config.old
+  480  make clean
+  481  mv .config.old .config.fb
+  482  make mrproper
+  483  make menuconfig
+  484  ls
+  485  ls -la
+  486  make menuconfig
+  487  cat .config | grep _FB_
+  488  cat .config.fb | grep _FB_
+  489  make menuconfig
+  490  cat .config | grep _FB_
+  491  cat .config | grep _FB_VESA
+  492  cat .config | grep _FB_EFI
+  493  cat .config | grep _FB_SIMP
+  494  ls
+  495  ls -la
+  496  make | tee /loggs/kernel-make.log 
+  497  echo $?
+  498  make modules_install
+  499  cp -iv arch/x86/boot/bzImage /boot/vmlinuz-6.7.4-lfs-12.1
+  500  cp -iv System.map /boot/System.map-6.7.4
+  501  cp -iv .config /boot/config-6.7.4
+  502  cat /boot/config-6.7.4 | grep VESA
+  503  cp -r Documentation -T /usr/share/doc/linux-6.7.4
+  504  history | grep grub
+  505  grub-install --target=x86_64-efi --efi-directory=/boot --removable /dev/sda
+  506  df -h
+  507  grub-mkconfig -o /boot/grub/grub.cfg
+  508  history
+  509  history > /loggs/last-history.txt

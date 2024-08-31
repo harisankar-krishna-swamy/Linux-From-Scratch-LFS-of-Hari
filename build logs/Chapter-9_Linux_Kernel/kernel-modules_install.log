@@ -1,0 +1,14 @@
+  INSTALL /lib/modules/6.7.4/modules.builtin
+  INSTALL /lib/modules/6.7.4/modules.order
+  SYMLINK /lib/modules/6.7.4/build
+  INSTALL /lib/modules/6.7.4/modules.builtin.modinfo
+  INSTALL /lib/modules/6.7.4/kernel/drivers/thermal/intel/x86_pkg_temp_thermal.ko
+  INSTALL /lib/modules/6.7.4/kernel/net/netfilter/nf_log_syslog.ko
+  INSTALL /lib/modules/6.7.4/kernel/fs/efivarfs/efivarfs.ko
+  INSTALL /lib/modules/6.7.4/kernel/net/netfilter/xt_nat.ko
+  INSTALL /lib/modules/6.7.4/kernel/net/netfilter/xt_mark.ko
+  INSTALL /lib/modules/6.7.4/kernel/net/netfilter/xt_LOG.ko
+  INSTALL /lib/modules/6.7.4/kernel/net/netfilter/xt_MASQUERADE.ko
+  INSTALL /lib/modules/6.7.4/kernel/net/netfilter/xt_addrtype.ko
+  INSTALL /lib/modules/6.7.4/kernel/net/ipv4/netfilter/iptable_nat.ko
+  DEPMOD  /lib/modules/6.7.4
