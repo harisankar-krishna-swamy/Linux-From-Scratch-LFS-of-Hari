@@ -7,13 +7,16 @@ Steps, Command histories, Logs of build are in this repository
 Operating System: Debian GNU/Linux 12 with KDE  
 Kernel Version: 6.1.0-23-amd64 (64-bit)  
 Graphics Platform: X11  
+
+## 2. Target
+arch: amd64  
 Boot: has EFI  
 Install: was on a USB stick  
 Size: After install 3.1 GB as reported by rsync  
 
 LFS build guide @ https://www.linuxfromscratch.org/lfs/downloads/stable/LFS-BOOK-12.1-NOCHUNKS.html
 
-## 2. Notes
+## 3. Notes
 
 a) A backup of the host system was taken before build  
 b) A *USB drive* was partition with a EFI and ext4 partition for target system   
@@ -21,7 +24,7 @@ c) Bash command history files may have overlaps. They were taken during build us
 d) All logs of packages in chapters are captured. One or two exceptions are there  
 e) Build essentials were already installed on system  
 
-## 3. Bugs fixed with solution / Changes from LFS document
+## 4. Bugs fixed with solution / Changes from LFS document
 
 a) LFS Boot stuck at "Loading Linux 6.7.4-lfs-12.1 ..." i.e no display of boot up logs.  
 Enable configs `CONFIG_FB_VESA=y` `CONFIG_FB_EFI=y` `CONFIG_FB_SIMPLE=y` and recompile kernel.  
