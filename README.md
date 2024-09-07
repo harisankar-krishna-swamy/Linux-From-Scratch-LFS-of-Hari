@@ -1,4 +1,4 @@
-# Linux From Scratch | Building a *LFS* by Hari :guitar: :guitar: :guitar: 
+# Linux From Scratch | Building a *LFS* by Hari@Vevde:guitar: :guitar: :guitar: 
 
 Steps, Command histories, Logs of build are in this repository
 
