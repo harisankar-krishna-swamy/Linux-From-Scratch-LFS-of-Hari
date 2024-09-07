@@ -1,4 +1,4 @@
-# Linux From Scratch | Building a *LFS* by Hari@Vevde:guitar: :guitar: :guitar: 
+# Linux From Scratch | Building a *LFS* by Hari@Vevde :guitar: :guitar: :guitar: 
 
 Steps, Command histories, Logs of build are in this repository
 
@@ -8,6 +8,8 @@ Operating System: Debian GNU/Linux 12 with KDE
 Kernel Version: 6.1.0-23-amd64 (64-bit)  
 Graphics Platform: X11  
 Boot: has EFI  
+Install: was on a USB stick  
+Size: After install 3.1 GB as reported by rsync  
 
 LFS build guide @ https://www.linuxfromscratch.org/lfs/downloads/stable/LFS-BOOK-12.1-NOCHUNKS.html
 
